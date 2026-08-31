@@ -752,3 +752,54 @@
     translate: none;
   }
 }
+
+/* ============================================================================
+ * NETWORK FIELD — the drifting 3D wireframe in the page margins
+ *
+ * Two strips pinned to the left and right edges, each exactly as wide as the
+ * empty gutter beside the content column. The centre of the screen is never
+ * covered, so nothing ever sits behind your text.
+ * ========================================================================== */
+.netfield {
+  position: fixed;
+  inset: 0;
+  /* Behind everything else in .shell, but still above the body grain. */
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.netfield__canvas {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  /* The gutter: whatever is left either side of the content column. */
+  width: max(0px, calc((100% - var(--page-max)) / 2));
+  /* Hidden by default; the media query below switches it on. */
+  display: none;
+}
+
+/* Fade towards the content so the network never crowds the words. */
+.netfield__canvas--left {
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 55%, transparent 100%);
+}
+
+.netfield__canvas--right {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 55%, transparent 100%);
+}
+
+/*
+ * Only draw when the margins are actually wide enough to be worth it:
+ * 1180px of content plus at least 170px of gutter on each side. Below that
+ * the canvases stay display:none, the JS sees zero width and skips its work,
+ * and phones never pay for any of this.
+ */
+@media (min-width: 1520px) {
+  .netfield__canvas {
+    display: block;
+  }
+}

@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useMemo } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { NavBar } from './components/NavBar'
+import { NetworkField } from './components/NetworkField'
 import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
@@ -59,6 +60,8 @@ export function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
+
+      <NetworkField />
 
       <NavBar items={navItems} />
 
