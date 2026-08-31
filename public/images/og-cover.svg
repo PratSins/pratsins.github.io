@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#c19a2f"/>
-  <text x="600" y="300" font-family="Poppins, Helvetica, Arial, sans-serif" font-size="72"
-        font-weight="700" fill="#241b06" text-anchor="middle">Adrian Reynolds</text>
-  <text x="600" y="362" font-family="Poppins, Helvetica, Arial, sans-serif" font-size="30"
-        fill="#241b06" opacity="0.72" text-anchor="middle">Senior Software Engineer</text>
+  <text x="600" y="300" font-family="Poppins, Helvetica, Arial, sans-serif" font-size="76"
+        font-weight="700" fill="#241b06" text-anchor="middle">Pratyush Singh</text>
+  <text x="600" y="366" font-family="Poppins, Helvetica, Arial, sans-serif" font-size="32"
+        fill="#241b06" opacity="0.72" text-anchor="middle">Backend &amp; Applied ML Engineer</text>
 </svg>

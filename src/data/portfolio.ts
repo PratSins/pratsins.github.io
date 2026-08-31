@@ -42,7 +42,7 @@ export const portfolio: PortfolioData = {
    * ------------------------------------------------------------------ */
   about: [
     'I am a software engineer who enjoys building scalable backend systems and putting AI to work in real products. My work spans microservices, distributed systems, cloud infrastructure, and applied ML — with a focus on turning ideas into reliable, production-ready software.',
-    'I am particularly interested in AI-native systems: applications where AI is part of the architecture rather than just an add-on. Whether it’s building high-performance services, integrating LLMs and computer vision, or designing systems that scale, I enjoy working at the intersection of backend engineering and applied AI.',
+    'I am particularly interested in AI-native systems: applications where AI is part of the architecture rather than just an add-on. Whether it\'s building high-performance services, integrating LLMs and computer vision, or designing systems that scale, I enjoy working at the intersection of backend engineering and applied AI.',
   ],
 
   /* --------------------------------------------------------------------
@@ -231,7 +231,7 @@ export const portfolio: PortfolioData = {
    * 9. FOOTER
    * ------------------------------------------------------------------ */
   footer: {
-    text: '© 2026 Adrian Reynolds',
+    text: '© 2026 Pratyush Singh',
     linkLabel: 'Back to top',
     linkHref: '#home',
   },

@@ -12,7 +12,8 @@ just dropping a file in and (if the extension changed) updating one line in
 | `avatar.svg` | Round photo at the top of the page | `profile.avatar` | square, 500×500 |
 | `projects/project-one.svg` | First project card + its page | `projects[0].image` | 3:2, 1200×750 |
 | `projects/project-two.svg` | Second project card + its page | `projects[1].image` | 3:2, 1200×750 |
-| `og-cover.svg` | Preview card when the link is shared | `index.html` `og:image` | 1200×630 |
+| `og-cover.png` | Preview card when the link is shared | `index.html` `og:image` | 1200×630 |
+| `og-cover.svg` | Editable source for the PNG above | *(not referenced)* | 1200×630 |
 | `../favicon.svg` | Browser tab icon (one folder up) | `index.html` `rel="icon"` | square |
 
 ## Replacing one
@@ -49,3 +50,26 @@ The three things that matter, in order:
 3. **Leave the `loading` attributes alone.** The avatar is set to load
    immediately; project images below the fold are set to load lazily. That is
    already handled in the components.
+
+## Re-exporting the social preview
+
+`og-cover.png` is what the `og:image` tag points at. It has to be a **PNG or
+JPEG** — LinkedIn, X, Slack and Facebook all refuse to render an SVG link
+preview, and you would get no image at all.
+
+`og-cover.svg` is the editable source. After changing it, re-export from the
+project root:
+
+```bash
+qlmanage -t -s 1200 -o /tmp public/images/og-cover.svg
+sips -c 630 1200 /tmp/og-cover.svg.png --out public/images/og-cover.png
+```
+
+(Both tools ship with macOS — nothing to install.) The export renders in
+Helvetica rather than Poppins, because Quick Look only has system fonts
+available. If you want the real typeface, design the card in Figma or Canva
+at 1200×630 and export a PNG straight over the top instead.
+
+One more thing before launch: make `og:image` an **absolute** URL once you
+have a domain — `https://yoursite.com/images/og-cover.png`. Many link
+scrapers ignore relative paths.
