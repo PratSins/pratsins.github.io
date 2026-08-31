@@ -7,7 +7,7 @@ A fast, single-page portfolio site with a mustard "artisan" theme, built with
 
 ## Running it
 
-You need [Node.js](https://nodejs.org) 20 or newer (you have 24 — you're fine).
+You need [Node.js](https://nodejs.org) 24 or newer.
 
 ```bash
 npm install     # once, to download dependencies
@@ -78,17 +78,6 @@ src/
     └── app.css           ← component styles
 ```
 
-### The top-bar links are plain anchors
-
-Exactly what you had in mind:
-
-```html
-<a href="#experience">Experience</a>
-```
-
-The browser does the scrolling. `scroll-behavior: smooth` makes it glide, and
-each section's `scroll-margin-top` stops the sticky bar from covering the
-heading you jumped to.
 
 ### Where the "translucent" look comes from
 
@@ -131,9 +120,8 @@ included:
 | **Netlify** | `public/_redirects` | ✅ included |
 | **Vercel** | `vercel.json` | ✅ included |
 | **Cloudflare Pages** | works out of the box | ✅ |
-| **GitHub Pages** | needs a `404.html` copy | run `npm run build:gh` |
 
-All four have a free tier that covers a portfolio comfortably.
+All 3 have a free tier that covers a portfolio comfortably.
 
 ### Custom domain
 
