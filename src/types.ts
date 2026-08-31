@@ -13,6 +13,7 @@ export type SocialKind =
   | 'linkedin'
   | 'website'
   | 'resume'
+  | 'leetcode'
 
 export interface SocialLink {
   kind: SocialKind

@@ -9,6 +9,7 @@ const SOCIAL_ICON: Record<SocialKind, IconName> = {
   linkedin: 'linkedin',
   website: 'website',
   resume: 'resume',
+  leetcode: 'leetcode',
 }
 
 export function Hero({ profile }: { profile: Profile }) {

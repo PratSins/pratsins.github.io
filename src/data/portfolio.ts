@@ -30,9 +30,10 @@ export const portfolio: PortfolioData = {
     socials: [
       { kind: 'email', label: 'Email', href: 'mailto:pratyush2002ps@gmail.com' },
       { kind: 'github', label: 'GitHub', href: 'https://github.com/PratSins' },
-      { kind: 'twitter', label: 'Twitter', href: 'https://x.com/yourhandle' },
-      // Add more if you like — 'linkedin', 'website' and 'resume' also have icons:
+      // { kind: 'twitter', label: 'Twitter', href: 'https://x.com/yourhandle' },
+      // Add more if you like — 'website' also has an icon:
       { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/pratsingh4069' },
+      { kind: 'leetcode', label: 'LeetCode', href: 'https://leetcode.com/u/yourhandle' },
       { kind: 'resume', label: 'Résumé', href: '/resume.pdf' },
     ],
   },
