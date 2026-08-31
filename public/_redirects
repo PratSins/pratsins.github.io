@@ -1,0 +1,2 @@
+# Netlify: send every path to index.html so /projects/<slug> works on refresh.
+/*  /index.html  200

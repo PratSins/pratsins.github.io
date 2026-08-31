@@ -1,0 +1,179 @@
+/* ============================================================================
+ * THEME — colours, fonts, texture, and the base element styles.
+ *
+ * Change the values in :root to re-skin the whole site. Every component
+ * reads from these variables, so you never have to hunt through files.
+ * ========================================================================== */
+
+:root {
+  /* --- The mustard artisan palette ------------------------------------ */
+  --bg: #c19a2f;
+  --bg-deep: #a8842a;
+
+  /* Text. "ink" is the near-black brown used for headings. */
+  --ink: #241b06;
+  --ink-soft: rgba(36, 27, 6, 0.84);
+  --ink-muted: rgba(36, 27, 6, 0.62);
+  --ink-faint: rgba(36, 27, 6, 0.42);
+
+  /* Translucent "glass" surfaces — cards, pills, the top bar. */
+  --glass: rgba(255, 255, 255, 0.09);
+  --glass-hover: rgba(255, 255, 255, 0.16);
+  --glass-sunk: rgba(60, 44, 6, 0.16);
+  --bar: rgba(103, 79, 16, 0.42);
+  --hairline: rgba(36, 27, 6, 0.16);
+  --hairline-strong: rgba(36, 27, 6, 0.28);
+
+  /* Accents */
+  --link: #2f56c9;
+  --status-live: #35c05f;
+  --status-soon: #a855f7;
+  --status-archived: rgba(36, 27, 6, 0.45);
+  --edge: #e8b62c;
+
+  /* --- Type ----------------------------------------------------------- */
+  --font: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* --- Layout --------------------------------------------------------- */
+  --page-max: 1180px;
+  --page-pad: clamp(1.25rem, 4vw, 3rem);
+  --bar-height: 64px;
+  /* Anchor links stop this far below the sticky bar. */
+  --anchor-offset: 96px;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+
+  /* --- Motion --------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-fast: 160ms;
+  --t-med: 280ms;
+}
+
+/* --- Reset ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps the layout from shifting when a short page becomes a long one. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--bg);
+  color: var(--ink-soft);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/*
+ * The "artisan" grain. This is a single inline SVG noise filter rather than
+ * an image file, so it costs zero network requests and scales to any screen.
+ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.34;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+/* --- Gold scrollbar, to match the reference ---------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--edge);
+  border-radius: var(--radius-pill);
+}
+html {
+  scrollbar-color: var(--edge) var(--bg-deep);
+  scrollbar-width: thin;
+}
+
+/* --- Focus ring: visible for keyboard users, invisible for mouse ------- */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Screen-reader-only text ------------------------------------------ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+ * Anyone who has asked their OS to reduce motion gets a still site.
+ * This single block switches off every animation and the smooth scroll.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
