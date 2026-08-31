@@ -27,13 +27,14 @@ export function Hero({ profile }: { profile: Profile }) {
           fetchPriority="high"
           decoding="async"
         />
-        {profile.openToWork && (
-          <span className="hero__badge">
-            <span className="hero__dot" aria-hidden="true" />
-            {profile.openToWorkLabel}
-          </span>
-        )}
       </div>
+
+      {profile.openToWork && (
+        <span className="hero__badge">
+          <span className="hero__dot" aria-hidden="true" />
+          {profile.openToWorkLabel}
+        </span>
+      )}
 
       <h1 className="hero__name">{profile.name}</h1>
 
