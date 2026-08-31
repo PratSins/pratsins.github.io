@@ -837,7 +837,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.35rem;
   color: var(--ink-soft);
   font-size: 1.02rem;
 }
@@ -869,7 +869,20 @@
 
 .cal__grid {
   position: relative;
-  width: max-content;
+  width: 100%;
+}
+
+/*
+ * The SVG stretches to whatever width the section gives it and the viewBox
+ * scales the squares up to match — roughly 1.5x bigger on a wide screen.
+ * min-width stops it shrinking into illegibility on a phone; below that the
+ * container scrolls sideways instead.
+ */
+.cal__grid svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 720px;
 }
 
 .cal__axis {
@@ -891,22 +904,17 @@
   stroke-width: 1.2;
 }
 
-/* Tooltip. translate(-50%, -100%) anchors it centred above the square. */
-.cal__tip {
-  position: absolute;
-  translate: -50% calc(-100% - 8px);
-  z-index: 2;
-  padding: 0.4rem 0.7rem;
-  border-radius: var(--radius-sm);
-  background: rgba(28, 21, 5, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 0.82rem;
-  font-weight: 500;
-  white-space: nowrap;
-  pointer-events: none;
+/*
+ * The hovered-day readout, sitting between the summary and the grid.
+ * min-height reserves the line whether or not it has text, so the grid
+ * below never shifts as the cursor moves across the squares.
+ */
+.cal__readout {
+  min-height: 1.6em;
+  margin-bottom: 1rem;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .cal__legend {

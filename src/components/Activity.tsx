@@ -113,14 +113,25 @@ export function Activity() {
         </a>
       </p>
 
+      {/*
+        The day readout. It keeps its height whether or not anything is
+        hovered, so the grid below never jumps as the cursor moves across it.
+        aria-live means a screen reader announces the day you land on.
+      */}
+      <p className="cal__readout" aria-live="polite">
+        {hovered ? describe(hovered) : ''}
+      </p>
+
       {/* The grid scrolls sideways on narrow screens rather than shrinking
           the squares into illegibility. */}
       <div className="cal__scroll">
         <div className="cal__grid" onMouseLeave={() => setHovered(null)}>
+          {/* No width/height attributes — the CSS stretches this to the full
+              width of the section, and the viewBox scales everything inside
+              it, squares and labels alike. */}
           <svg
-            width={width}
-            height={height}
             viewBox={`0 0 ${width} ${height}`}
+            preserveAspectRatio="xMidYMid meet"
             role="img"
             aria-label={`${data.total} GitHub contributions between ${data.from} and ${data.to}`}
           >
@@ -149,26 +160,10 @@ export function Activity() {
                 onMouseEnter={() => setHovered(cell)}
                 onFocus={() => setHovered(cell)}
                 tabIndex={-1}
-              >
-                {/* Native fallback for anyone without a pointer. */}
-                <title>{describe(cell)}</title>
-              </rect>
+              />
             ))}
           </svg>
 
-          {/* Custom tooltip, so it matches the site rather than the browser's
-              grey default. Positioned over the hovered square. */}
-          {hovered && (
-            <span
-              className="cal__tip"
-              style={{
-                left: LEFT_LABELS + hovered.col * STEP + CELL / 2,
-                top: TOP_LABELS + hovered.row * STEP,
-              }}
-            >
-              {describe(hovered)}
-            </span>
-          )}
         </div>
       </div>
 
