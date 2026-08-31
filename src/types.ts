@@ -102,9 +102,19 @@ export interface BlogPost {
   external?: boolean
 }
 
-export interface SkillGroup {
+export interface SkillItem {
   name: string
-  items: string[]
+  /**
+   * Slug of a logo in src/components/SkillIcons.tsx (e.g. 'go', 'react').
+   * Leave it out and the pill simply shows text, which is fine.
+   */
+  icon?: string
+}
+
+export interface SkillGroup {
+  /** Row label, e.g. "Backend & Cloud". Hidden when there is only one group. */
+  name: string
+  items: SkillItem[]
 }
 
 export interface NavItem {

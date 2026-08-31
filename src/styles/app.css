@@ -803,3 +803,15 @@
     display: block;
   }
 }
+
+/* Brand logo inside a skill pill. */
+.skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-left: 0.9rem;
+}
+
+.skill__logo {
+  flex: none;
+}

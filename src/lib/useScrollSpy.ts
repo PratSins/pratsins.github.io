@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react'
  * Returns the id of the section currently nearest the top of the viewport,
  * so the top bar can highlight the matching link as you scroll.
  *
- * Like <Reveal>, this uses IntersectionObserver instead of a scroll handler.
- * A scroll handler fires dozens of times per second and would make the page
- * feel heavy; the observer only wakes up when a section actually crosses
- * the line we care about.
+ * Uses IntersectionObserver rather than a scroll handler. A scroll handler
+ * fires dozens of times per second and would make the page feel heavy; the
+ * observer only wakes up when a section actually crosses the line we care
+ * about.
  */
 export function useScrollSpy(ids: string[], offset = 96): string {
-  const [activeId, setActiveId] = useState(ids[0] ?? '')
+  const [spyId, setSpyId] = useState(ids[0] ?? '')
+  const [atBottom, setAtBottom] = useState(false)
 
   useEffect(() => {
     if (ids.length === 0) return
@@ -38,7 +39,7 @@ export function useScrollSpy(ids: string[], offset = 96): string {
             best = id
           }
         }
-        if (best) setActiveId(best)
+        if (best) setSpyId(best)
       },
       {
         // Shrink the observation box so a section counts as "active" only
@@ -53,8 +54,36 @@ export function useScrollSpy(ids: string[], offset = 96): string {
       .filter((node): node is HTMLElement => node !== null)
 
     nodes.forEach((node) => observer.observe(node))
-    return () => observer.disconnect()
+
+    /*
+     * The last-section problem.
+     *
+     * A short final section can never reach the observation band above,
+     * because the page simply runs out of room to scroll — so the previous
+     * section stays highlighted even though you are looking at the last one.
+     *
+     * The fix is a 1px marker appended after everything else. When it comes
+     * into view you are at the true bottom of the page, and the final nav
+     * link wins regardless of what the band says.
+     */
+    const endMarker = document.createElement('div')
+    endMarker.setAttribute('aria-hidden', 'true')
+    endMarker.style.cssText = 'height:1px;width:100%;pointer-events:none;'
+    document.body.appendChild(endMarker)
+
+    const endObserver = new IntersectionObserver(
+      ([entry]) => setAtBottom(entry.isIntersecting),
+      { threshold: 0 },
+    )
+    endObserver.observe(endMarker)
+
+    return () => {
+      observer.disconnect()
+      endObserver.disconnect()
+      endMarker.remove()
+    }
   }, [ids, offset])
 
-  return activeId
+  // At the bottom of the page the final section always wins.
+  return atBottom ? (ids[ids.length - 1] ?? spyId) : spyId
 }

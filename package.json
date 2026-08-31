@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --force",
-    "build:gh": "npm run build && cp dist/index.html dist/404.html"
+    "build:gh": "npm run build && cp dist/index.html dist/404.html",
+    "icons": "node scripts/gen-skill-icons.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -19,6 +20,8 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "@vitejs/plugin-react": "^5.0.4",
+    "devicon": "^2.17.0",
+    "simple-icons": "^16.29.0",
     "typescript": "^5.9.3",
     "vite": "^7.1.9"
   }

@@ -172,29 +172,42 @@ export const portfolio: PortfolioData = {
   /* --------------------------------------------------------------------
    * 6. SKILLS
    *
-   * One group renders as a single row of pills (like the reference site).
-   * Add more groups and each gets its own labelled row.
+   * Each group is one labelled row. `icon` is a slug from
+   * src/components/SkillIcons.tsx — omit it for a text-only pill.
    * ------------------------------------------------------------------ */
   skills: [
     {
-      name: 'Core',
+      name: 'Backend & Cloud',
       items: [
-        'React',
-        'Node.js',
-        'TypeScript',
-        'Next.js',
-        'GraphQL',
-        'PostgreSQL',
-        'Docker',
-        'AWS',
-        'Artificial Intelligence',
-        'Machine Learning',
+        { name: 'Go', icon: 'go' },
+        { name: 'Java', icon: 'java' },
+        { name: 'Spring Boot', icon: 'spring' },
+        { name: 'Google Cloud', icon: 'gcp' },
       ],
     },
-    // {
-    //   name: 'Also comfortable with',
-    //   items: ['Go', 'Kubernetes', 'Terraform'],
-    // },
+    {
+      name: 'Frontend',
+      items: [
+        { name: 'React', icon: 'react' },
+        { name: 'TypeScript', icon: 'typescript' },
+      ],
+    },
+    {
+      name: 'Databases',
+      items: [
+        { name: 'PostgreSQL', icon: 'postgresql' },
+        { name: 'MongoDB', icon: 'mongodb' },
+      ],
+    },
+    {
+      name: 'Machine Learning',
+      items: [
+        { name: 'PyTorch', icon: 'pytorch' },
+        { name: 'scikit-learn', icon: 'scikitlearn' },
+        { name: 'NumPy', icon: 'numpy' },
+        { name: 'pandas', icon: 'pandas' },
+      ],
+    },
   ],
 
   /* --------------------------------------------------------------------
@@ -207,6 +220,14 @@ export const portfolio: PortfolioData = {
         'A short write-up of the stack and the decisions behind this site. Point this anywhere — your blog, dev.to, Medium, or a page in this project.',
       href: 'https://example.com/blog/post',
       date: '2026-01-12',
+      external: true,
+    },
+    {
+      title: 'Notes on running LLMs in production',
+      description:
+        'Second placeholder post, so you can see how a list of them stacks up. Swap the title, date and link for something real whenever you are ready.',
+      href: 'https://example.com/blog/second-post',
+      date: '2026-02-04',
       external: true,
     },
   ],
