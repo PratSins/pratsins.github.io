@@ -27,6 +27,10 @@ export const portfolio: PortfolioData = {
     avatar: '/images/avatar.svg',
     openToWork: true,
     openToWorkLabel: 'Open to work',
+    currentRole: {
+      label: 'Currently Employed at SellerApp',
+      href: '#experience',
+    },
     socials: [
       { kind: 'email', label: 'Email', href: 'mailto:pratyush2002ps@gmail.com' },
       { kind: 'github', label: 'GitHub', href: 'https://github.com/PratSins' },
@@ -204,6 +208,7 @@ export const portfolio: PortfolioData = {
       items: [
         { name: 'PyTorch', icon: 'pytorch' },
         { name: 'scikit-learn', icon: 'scikitlearn' },
+        { name: 'OpenCV', icon: 'opencv' },
         { name: 'NumPy', icon: 'numpy' },
         { name: 'pandas', icon: 'pandas' },
       ],

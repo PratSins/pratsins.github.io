@@ -10,6 +10,31 @@ import type { SkillGroup } from '../types'
  */
 const LOGO_COLOUR: 'brand' | 'ink' = 'brand'
 
+/**
+ * Logos that get a disc behind them, and which colour it is.
+ *
+ * Several brand marks are drawn in light colours meant for a white page —
+ * Go's and React's cyan, Spring's and MongoDB's green, scikit-learn's orange.
+ * On mustard they wash out. A disc gives them the background they were
+ * designed for, and reads as deliberate rather than accidental.
+ *
+ * A logo not listed here is drawn straight onto the pill, which is right for
+ * the already-dark marks (TypeScript, PostgreSQL, PyTorch, NumPy, pandas).
+ *
+ * The three colours are defined in theme.css.
+ */
+const DISC_LOGOS: Record<string, string> = {
+  go: 'var(--logo-disc-go)',
+  java: 'var(--logo-disc-light)',
+  spring: 'var(--logo-disc-grey)',
+  postgresql: 'var(--logo-disc-grey)',
+  gcp: 'var(--logo-disc)',
+  react: 'var(--logo-disc)',
+  mongodb: 'var(--logo-disc)',
+  scikitlearn: 'var(--logo-disc)',
+  opencv: 'var(--logo-disc-grey)',
+}
+
 export function Skills({ groups }: { groups: SkillGroup[] }) {
   /* One group renders as a bare row of pills. Two or more and each row gets
      a small label above it. */
@@ -23,11 +48,15 @@ export function Skills({ groups }: { groups: SkillGroup[] }) {
           <ul className="skills">
             {group.items.map((skill) => {
               const brand = skill.icon ? BRAND_ICONS[skill.icon] : undefined
+              const disc = skill.icon ? DISC_LOGOS[skill.icon] : undefined
               return (
                 <li className="skill" key={skill.name}>
                   {brand && (
+                    <span
+                      className={`skill__logo${disc ? ' skill__logo--disc' : ''}`}
+                      style={disc ? { background: disc } : undefined}
+                    >
                     <svg
-                      className="skill__logo"
                       viewBox={brand.viewBox}
                       width="17"
                       height="17"
@@ -49,6 +78,7 @@ export function Skills({ groups }: { groups: SkillGroup[] }) {
                         />
                       ))}
                     </svg>
+                    </span>
                   )}
                   {skill.name}
                 </li>

@@ -29,9 +29,18 @@ export interface Profile {
   location: string
   /** Path inside /public, e.g. "/images/avatar.jpg" */
   avatar: string
-  /** Shows the green "Open to work" badge on the avatar when true. */
+  /** Shows the green "Open to work" badge when true. */
   openToWork: boolean
   openToWorkLabel: string
+  /**
+   * Optional pill shown to the LEFT of the "Open to work" badge. Clicking it
+   * jumps to a section — set `href` to '#experience', '#projects', etc.
+   * Remove the whole block to hide it.
+   */
+  currentRole?: {
+    label: string
+    href: string
+  }
   socials: SocialLink[]
 }
 

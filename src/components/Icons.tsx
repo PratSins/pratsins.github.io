@@ -25,6 +25,7 @@ export type IconName =
   | 'website'
   | 'resume'
   | 'leetcode'
+  | 'building'
   | 'mapPin'
   | 'arrowUpRight'
   | 'arrowLeft'
@@ -112,6 +113,14 @@ const PATHS: Record<IconName, ReactNode> = {
     <>
       <path d="M15.6 3.4 8.2 10.8a4.3 4.3 0 0 0 0 6.1l3 3a4.3 4.3 0 0 0 6.1 0l1.4-1.4" />
       <path d="M10.3 13.8h9.4" />
+    </>
+  ),
+  building: (
+    <>
+      <path d="M3.5 21V4.5A1.5 1.5 0 0 1 5 3h8a1.5 1.5 0 0 1 1.5 1.5V21" />
+      <path d="M14.5 9.5h4A1.5 1.5 0 0 1 20 11v10" />
+      <path d="M2 21h20" />
+      <path d="M6.8 7h1.4M10.3 7h1.4M6.8 11h1.4M10.3 11h1.4M6.8 15h1.4M10.3 15h1.4" />
     </>
   ),
   mapPin: (

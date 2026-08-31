@@ -30,11 +30,24 @@ export function Hero({ profile }: { profile: Profile }) {
         />
       </div>
 
-      {profile.openToWork && (
-        <span className="hero__badge">
-          <span className="hero__dot" aria-hidden="true" />
-          {profile.openToWorkLabel}
-        </span>
+      {(profile.currentRole || profile.openToWork) && (
+        <div className="hero__badges">
+          {/* A plain jump link — clicking it scrolls to the section named in
+              currentRole.href, exactly like the top bar does. */}
+          {profile.currentRole && (
+            <a className="hero__badge hero__badge--link" href={profile.currentRole.href}>
+              <Icon name="building" size={15} />
+              {profile.currentRole.label}
+            </a>
+          )}
+
+          {profile.openToWork && (
+            <span className="hero__badge">
+              <span className="hero__dot" aria-hidden="true" />
+              {profile.openToWorkLabel}
+            </span>
+          )}
+        </div>
       )}
 
       <h1 className="hero__name">{profile.name}</h1>

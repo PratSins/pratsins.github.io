@@ -30,6 +30,12 @@
   --status-soon: #a855f7;
   --status-archived: rgba(36, 27, 6, 0.45);
   --edge: #e8b62c;
+  /* Discs behind the light-coloured skill logos. Which logo gets which
+     is decided in Skills.tsx. */
+  --logo-disc: #241b06;       /* dark ink — the default */
+  --logo-disc-grey: #52545a;  /* grey, for Spring Boot's green */
+  --logo-disc-light: #eceae4; /* whitish grey, for Java */
+  --logo-disc-go: #ddd0cf;    /* a shade darker than Java's, faintly pink, for Go */
 
   /* --- Type ----------------------------------------------------------- */
   --font: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',

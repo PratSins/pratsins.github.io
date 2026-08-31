@@ -176,8 +176,29 @@
   font-size: 0.86rem;
   font-weight: 500;
   white-space: nowrap;
-  /* Larger gap below, separating the chip from the name. */
+}
+
+/* The chips sit in a row under the avatar and wrap on narrow screens. */
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  /* Separates the chips from the name below. */
   margin-bottom: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+/* The employer chip is a link, so it brightens on hover to say so. */
+.hero__badge--link {
+  white-space: normal;
+  text-align: center;
+  transition: background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+.hero__badge--link:hover {
+  background: rgba(43, 32, 8, 0.55);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 /*
@@ -809,9 +830,22 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding-left: 0.9rem;
+  padding-left: 0.75rem;
 }
 
+/* Every logo occupies the same slot, disc or not, so pill heights match. */
 .skill__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: none;
+  width: 26px;
+  height: 26px;
+}
+
+/* Light-coloured marks get a background they were drawn for. The colour is
+   set per logo in Skills.tsx; this is only the fallback and the shape. */
+.skill__logo--disc {
+  border-radius: 50%;
+  background: var(--logo-disc);
 }

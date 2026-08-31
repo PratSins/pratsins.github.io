@@ -28,7 +28,6 @@ const SIMPLE = {
   spring: 'siSpring',
   react: 'siReact',
   typescript: 'siTypescript',
-  postgresql: 'siPostgresql',
   mongodb: 'siMongodb',
   pytorch: 'siPytorch',
   scikitlearn: 'siScikitlearn',
@@ -43,6 +42,12 @@ const DEVICON = {
   // simple-icons cannot carry Java at all; its OpenJDK stand-in is a
   // different mark. devicon has the real one, and it is smaller.
   java: ['java', 'Java', '#EA2D2E'],
+  // simple-icons draws PostgreSQL as thin line art, which goes sub-pixel and
+  // all but vanishes at 17px. devicon's is a solid filled elephant.
+  postgresql: ['postgresql', 'PostgreSQL', '#336791'],
+  // OpenCV's mark is three coloured rings; flattening it to one colour loses
+  // the whole identity, and devicon's costs the same as the flat version.
+  opencv: ['opencv', 'OpenCV', '#5C3EE8'],
 }
 
 function readDevicon(folder) {
