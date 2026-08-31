@@ -148,3 +148,25 @@ export interface PortfolioData {
     linkHref?: string
   }
 }
+
+/**
+ * Shape of src/data/contributions.json, written by `npm run contributions`.
+ *
+ * Stored compactly: only the daily counts, plus the first date and its
+ * weekday. Each cell's date and grid position is derived from those, which
+ * keeps the file near 1 KB instead of repeating a date string 366 times.
+ */
+export interface Contributions {
+  username: string
+  /** Total contributions across the whole range. */
+  total: number
+  /** ISO date of the first cell. */
+  from: string
+  /** ISO date of the last cell. */
+  to: string
+  /** Weekday of `from`. 0 = Sunday, matching the grid's top row. */
+  startWeekday: number
+  /** One entry per day, consecutive from `from`. */
+  counts: number[]
+  generatedAt: string
+}

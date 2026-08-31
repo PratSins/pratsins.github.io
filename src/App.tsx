@@ -51,6 +51,7 @@ export function App() {
     if (portfolio.projects.length) present.add('projects')
     if (portfolio.education.length) present.add('education')
     if (portfolio.skills.length) present.add('skills')
+    present.add('activity')
     if (portfolio.blog.length) present.add('blog')
     return portfolio.nav.filter((item) => present.has(item.id))
   }, [])

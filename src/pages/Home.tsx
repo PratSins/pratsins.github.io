@@ -3,6 +3,7 @@ import { Section } from '../components/Section'
 import { ExperienceList, EducationList } from '../components/Entries'
 import { ProjectCard } from '../components/ProjectCard'
 import { Skills } from '../components/Skills'
+import { Activity } from '../components/Activity'
 import { BlogList } from '../components/Blog'
 import { portfolio } from '../data/portfolio'
 
@@ -69,6 +70,10 @@ export function Home() {
           <Skills groups={skills} />
         </Section>
       )}
+
+      <Section id="activity" title="Activity">
+        <Activity />
+      </Section>
 
       {blog.length > 0 && (
         <Section id="blog" title="Blog">
