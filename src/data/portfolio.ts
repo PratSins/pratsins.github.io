@@ -20,18 +20,19 @@ export const portfolio: PortfolioData = {
    * 1. WHO YOU ARE  — the big hero block at the top of the page
    * ------------------------------------------------------------------ */
   profile: {
-    name: 'Adrian Reynolds',
-    role: 'Senior Software Engineer',
-    location: 'Tech City',
+    name: 'Pratyush Singh',
+    // role: 'AI Native Microservices Engineer',
+    role: 'Backend & Applied ML Engineer',
+    location: 'Bangalore',
     avatar: '/images/avatar.svg',
     openToWork: true,
     openToWorkLabel: 'Open to work',
     socials: [
-      { kind: 'email', label: 'Email', href: 'mailto:hello@example.com' },
-      { kind: 'github', label: 'GitHub', href: 'https://github.com/yourhandle' },
-      { kind: 'twitter', label: 'Twitter', href: 'https://x.com/yourhandle' },
+      { kind: 'email', label: 'Email', href: 'mailto:pratyush2002ps@gmail.com' },
+      { kind: 'github', label: 'GitHub', href: 'https://github.com/PratSins' },
+      // { kind: 'twitter', label: 'Twitter', href: 'https://x.com/yourhandle' },`
       // Add more if you like — 'linkedin', 'website' and 'resume' also have icons:
-      // { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/yourhandle' },
+      { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/pratsingh4069' },
       // { kind: 'resume', label: 'Résumé', href: '/resume.pdf' },
     ],
   },
@@ -40,8 +41,8 @@ export const portfolio: PortfolioData = {
    * 2. ABOUT  — each string in the array becomes its own paragraph
    * ------------------------------------------------------------------ */
   about: [
-    'A passionate software engineer with over 6 years of experience in building scalable web applications. I love working with modern technologies and solving complex problems. My goal is to create meaningful products that make a difference.',
-    'This second paragraph is here to show you how multiple paragraphs look. Delete it, or keep adding more — every string in this list renders as its own block of text.',
+    'I am a software engineer who enjoys building scalable backend systems and putting AI to work in real products. My work spans microservices, distributed systems, cloud infrastructure, and applied ML — with a focus on turning ideas into reliable, production-ready software.',
+    'I am particularly interested in AI-native systems: applications where AI is part of the architecture rather than just an add-on. Whether it’s building high-performance services, integrating LLMs and computer vision, or designing systems that scale, I enjoy working at the intersection of backend engineering and applied AI.',
   ],
 
   /* --------------------------------------------------------------------
