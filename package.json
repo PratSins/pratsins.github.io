@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "typecheck": "tsc -b --force",
     "build:gh": "npm run build && cp dist/index.html dist/404.html",
-    "icons": "node scripts/gen-skill-icons.mjs"
+    "icons": "node scripts/gen-skill-icons.mjs",
+    "contributions": "node scripts/fetch-contributions.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

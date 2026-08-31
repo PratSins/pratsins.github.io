@@ -26,6 +26,7 @@ export type IconName =
   | 'resume'
   | 'leetcode'
   | 'building'
+  | 'activity'
   | 'mapPin'
   | 'arrowUpRight'
   | 'arrowLeft'
@@ -123,6 +124,7 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="M6.8 7h1.4M10.3 7h1.4M6.8 11h1.4M10.3 11h1.4M6.8 15h1.4M10.3 15h1.4" />
     </>
   ),
+  activity: <path d="M2.5 12h4.2l2.8-7.5 4.2 15 2.8-7.5h5" />,
   mapPin: (
     <>
       <path d="M20 10.5c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0Z" />

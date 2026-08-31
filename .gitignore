@@ -3,5 +3,12 @@ dist
 dist-ssr
 *.local
 .DS_Store
+
+
 .vite
 node_modules/.tmp
+
+# Local secrets — never commit these.
+# The GitHub token for the contributions graph lives here.
+.env
+.env.local

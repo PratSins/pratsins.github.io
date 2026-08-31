@@ -13,6 +13,7 @@ You need [Node.js](https://nodejs.org) 24 or newer.
 npm install     # once, to download dependencies
 npm run dev     # start the site at http://localhost:5173
 ```
+Step 1 - `npm run contributions`
 
 Leave `npm run dev` running while you work. Edit a file, hit save, and the
 browser updates on its own — no refresh needed.
