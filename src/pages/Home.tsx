@@ -19,19 +19,29 @@ export function Home() {
 
   return (
     <main id="main" className="container">
-      <Hero profile={profile} />
+      {/*
+        Hero and About share one section so they sit side by side: profile on
+        the left, About on the right. Below 900px the grid collapses and About
+        drops underneath. Because both are above the fold, neither is wrapped
+        in <Reveal> — content in the first screenful should paint immediately
+        rather than wait on a scroll animation.
+      */}
+      <section id="home" className="section intro" aria-label="Introduction">
+        <Hero profile={profile} />
 
-      {about.length > 0 && (
-        <Section id="about" title="About">
-          <Reveal>
+        {about.length > 0 && (
+          <div className="intro__about" id="about">
+            <div className="section__head">
+              <h2 className="section__title">About</h2>
+            </div>
             <div className="prose">
               {about.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
             </div>
-          </Reveal>
-        </Section>
-      )}
+          </div>
+        )}
+      </section>
 
       {experience.length > 0 && (
         <Section id="experience" title="Experience">

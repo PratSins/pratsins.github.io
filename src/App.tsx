@@ -44,8 +44,8 @@ export function App() {
    * `blog` in portfolio.ts and both the section and its link disappear.
    */
   const navItems = useMemo(() => {
+    // 'about' is deliberately absent — it renders inside the Home section.
     const present = new Set<string>(['home'])
-    if (portfolio.about.length) present.add('about')
     if (portfolio.experience.length) present.add('experience')
     if (portfolio.projects.length) present.add('projects')
     if (portfolio.education.length) present.add('education')

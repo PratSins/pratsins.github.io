@@ -30,15 +30,18 @@ export const portfolio: PortfolioData = {
     socials: [
       { kind: 'email', label: 'Email', href: 'mailto:pratyush2002ps@gmail.com' },
       { kind: 'github', label: 'GitHub', href: 'https://github.com/PratSins' },
-      // { kind: 'twitter', label: 'Twitter', href: 'https://x.com/yourhandle' },`
+      { kind: 'twitter', label: 'Twitter', href: 'https://x.com/yourhandle' },
       // Add more if you like — 'linkedin', 'website' and 'resume' also have icons:
       { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/pratsingh4069' },
-      // { kind: 'resume', label: 'Résumé', href: '/resume.pdf' },
+      { kind: 'resume', label: 'Résumé', href: '/resume.pdf' },
     ],
   },
 
   /* --------------------------------------------------------------------
    * 2. ABOUT  — each string in the array becomes its own paragraph
+   *
+   * This renders beside the hero, inside the Home section, so it has no
+   * tab of its own in the top bar.
    * ------------------------------------------------------------------ */
   about: [
     'I am a software engineer who enjoys building scalable backend systems and putting AI to work in real products. My work spans microservices, distributed systems, cloud infrastructure, and applied ML — with a focus on turning ideas into reliable, production-ready software.',
@@ -219,7 +222,6 @@ export const portfolio: PortfolioData = {
    * ------------------------------------------------------------------ */
   nav: [
     { id: 'home', label: 'Home', icon: 'home' },
-    { id: 'about', label: 'About', icon: 'user' },
     { id: 'experience', label: 'Experience', icon: 'briefcase' },
     { id: 'projects', label: 'Projects', icon: 'code' },
     { id: 'education', label: 'Education', icon: 'graduation' },

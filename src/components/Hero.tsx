@@ -13,7 +13,7 @@ const SOCIAL_ICON: Record<SocialKind, IconName> = {
 
 export function Hero({ profile }: { profile: Profile }) {
   return (
-    <section id="home" className="section hero" aria-label="Introduction">
+    <div className="hero">
       <div className="hero__avatar-wrap">
         <img
           className="hero__avatar"
@@ -69,6 +69,6 @@ export function Hero({ profile }: { profile: Profile }) {
           })}
         </nav>
       )}
-    </section>
+    </div>
   )
 }
