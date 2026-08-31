@@ -1,5 +1,4 @@
 import { Icon } from './Icons'
-import { Reveal } from './Reveal'
 import type { EducationItem, ExperienceItem } from '../types'
 
 /**
@@ -10,8 +9,8 @@ import type { EducationItem, ExperienceItem } from '../types'
 export function ExperienceList({ items }: { items: ExperienceItem[] }) {
   return (
     <div className="entry-list">
-      {items.map((item, i) => (
-        <Reveal key={`${item.company}-${item.title}`} delay={i * 70}>
+      {items.map((item) => (
+        <div key={`${item.company}-${item.title}`}>
           <article className="entry">
             <h3 className="entry__title">
               {item.companyUrl ? (
@@ -29,7 +28,7 @@ export function ExperienceList({ items }: { items: ExperienceItem[] }) {
             </p>
             <p className="entry__body">{item.description}</p>
           </article>
-        </Reveal>
+        </div>
       ))}
     </div>
   )
@@ -38,8 +37,8 @@ export function ExperienceList({ items }: { items: ExperienceItem[] }) {
 export function EducationList({ items }: { items: EducationItem[] }) {
   return (
     <div className="entry-list">
-      {items.map((item, i) => (
-        <Reveal key={item.school + item.start} delay={i * 70}>
+      {items.map((item) => (
+        <div key={item.school + item.start}>
           <article className="entry">
             <h3 className="entry__title">{item.school}</h3>
             <p className="entry__dates">
@@ -50,7 +49,7 @@ export function EducationList({ items }: { items: EducationItem[] }) {
               {item.description ? `. ${item.description}` : ''}
             </p>
           </article>
-        </Reveal>
+        </div>
       ))}
     </div>
   )

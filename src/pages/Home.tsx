@@ -1,6 +1,5 @@
 import { Hero } from '../components/Hero'
 import { Section } from '../components/Section'
-import { Reveal } from '../components/Reveal'
 import { ExperienceList, EducationList } from '../components/Entries'
 import { ProjectCard } from '../components/ProjectCard'
 import { Skills } from '../components/Skills'
@@ -22,9 +21,7 @@ export function Home() {
       {/*
         Hero and About share one section so they sit side by side: profile on
         the left, About on the right. Below 900px the grid collapses and About
-        drops underneath. Because both are above the fold, neither is wrapped
-        in <Reveal> — content in the first screenful should paint immediately
-        rather than wait on a scroll animation.
+        drops underneath.
       */}
       <section id="home" className="section intro" aria-label="Introduction">
         <Hero profile={profile} />
@@ -52,10 +49,10 @@ export function Home() {
       {projects.length > 0 && (
         <Section id="projects" title="Projects" count={projects.length}>
           <div className="projects">
-            {projects.map((project, i) => (
-              <Reveal key={project.slug} delay={i * 90}>
+            {projects.map((project) => (
+              <div key={project.slug}>
                 <ProjectCard project={project} />
-              </Reveal>
+              </div>
             ))}
           </div>
         </Section>

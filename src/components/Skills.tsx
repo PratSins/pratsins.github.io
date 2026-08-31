@@ -1,4 +1,3 @@
-import { Reveal } from './Reveal'
 import { BRAND_ICONS } from './SkillIcons'
 import type { SkillGroup } from '../types'
 
@@ -42,8 +41,8 @@ export function Skills({ groups }: { groups: SkillGroup[] }) {
 
   return (
     <div>
-      {groups.map((group, i) => (
-        <Reveal key={group.name} className="skill-group" delay={i * 80}>
+      {groups.map((group) => (
+        <div key={group.name} className="skill-group">
           {showLabels && <p className="skill-group__name">{group.name}</p>}
           <ul className="skills">
             {group.items.map((skill) => {
@@ -85,7 +84,7 @@ export function Skills({ groups }: { groups: SkillGroup[] }) {
               )
             })}
           </ul>
-        </Reveal>
+        </div>
       ))}
     </div>
   )

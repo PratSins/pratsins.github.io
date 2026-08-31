@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Icon } from '../components/Icons'
-import { Reveal } from '../components/Reveal'
 import { portfolio } from '../data/portfolio'
 import { NotFound } from './NotFound'
 import type { IconName } from '../components/Icons'
@@ -49,7 +48,7 @@ export function ProjectDetail() {
         All projects
       </Link>
 
-      <Reveal>
+      <div>
         <h1 className="detail__title">{project.title}</h1>
         <p className="detail__meta">
           <span>{project.category}</span>
@@ -66,22 +65,22 @@ export function ProjectDetail() {
             ))}
           </ul>
         )}
-      </Reveal>
+      </div>
 
-      <Reveal delay={60}>
+      <div>
         <figure className="detail__hero">
           <img src={project.image} alt={project.imageAlt} loading="eager" decoding="async" />
         </figure>
-      </Reveal>
+      </div>
 
       {project.detail && (
         <>
-          <Reveal delay={90}>
+          <div>
             <p className="detail__intro">{project.detail.intro}</p>
-          </Reveal>
+          </div>
 
-          {project.detail.sections.map((section, i) => (
-            <Reveal key={section.heading} delay={120 + i * 60}>
+          {project.detail.sections.map((section) => (
+            <div key={section.heading}>
               <section className="detail__section">
                 <h2>{section.heading}</h2>
                 <div className="prose">
@@ -90,13 +89,13 @@ export function ProjectDetail() {
                   ))}
                 </div>
               </section>
-            </Reveal>
+            </div>
           ))}
         </>
       )}
 
       {project.links.length > 0 && (
-        <Reveal>
+        <div>
           <div className="detail__links">
             {project.links.map((link) => (
               <a
@@ -111,7 +110,7 @@ export function ProjectDetail() {
               </a>
             ))}
           </div>
-        </Reveal>
+        </div>
       )}
     </main>
   )

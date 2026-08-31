@@ -365,7 +365,7 @@
 }
 
 /* ============================================================================
- * EXPERIENCE + EDUCATION — same card shape, revealed on hover
+ * EXPERIENCE + EDUCATION — same card shape, highlighted on hover
  * ========================================================================== */
 .entry-list {
   display: flex;
@@ -750,28 +750,6 @@
 }
 .notfound h1 {
   font-size: clamp(2.5rem, 8vw, 5rem);
-}
-
-/* ============================================================================
- * SCROLL REVEAL — used by <Reveal>
- * ========================================================================== */
-.reveal {
-  opacity: 0;
-  translate: 0 22px;
-  transition: opacity 620ms var(--ease), translate 620ms var(--ease);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-.reveal.is-visible {
-  opacity: 1;
-  translate: 0 0;
-}
-
-/* If motion is reduced, content is simply always visible. */
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    translate: none;
-  }
 }
 
 /* ============================================================================

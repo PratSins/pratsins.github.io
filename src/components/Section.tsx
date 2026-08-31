@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { Reveal } from './Reveal'
 
 interface SectionProps {
   /** Becomes the anchor target: <a href="#id"> scrolls here. */
@@ -14,14 +13,14 @@ interface SectionProps {
 export function Section({ id, title, count, children }: SectionProps) {
   return (
     <section id={id} className="section" aria-labelledby={`${id}-title`}>
-      <Reveal>
+      <div>
         <div className="section__head">
           <h2 className="section__title" id={`${id}-title`}>
             {title}
           </h2>
           {count !== undefined && <span className="section__count">({count})</span>}
         </div>
-      </Reveal>
+      </div>
       {children}
     </section>
   )
