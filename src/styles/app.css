@@ -831,6 +831,19 @@
 /* ============================================================================
  * ACTIVITY — the GitHub contribution calendar
  * ========================================================================== */
+/*
+ * The whole calendar sits on a translucent panel, the same glass treatment as
+ * the project cards — same tokens, so it stays in step if you retune them.
+ */
+.cal {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: var(--radius);
+  background: var(--glass);
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
 .cal__summary {
   display: flex;
   flex-wrap: wrap;
@@ -838,8 +851,9 @@
   justify-content: space-between;
   gap: 0.75rem;
   margin-bottom: 0.35rem;
-  color: var(--ink-soft);
+  color: var(--ink);
   font-size: 1.02rem;
+  font-weight: 500;
 }
 .cal__summary strong {
   color: var(--ink);
@@ -850,8 +864,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--ink-muted);
-  font-weight: 500;
+  color: var(--ink-soft);
+  font-weight: 600;
   transition: color var(--t-fast) var(--ease);
 }
 .cal__handle:hover {
@@ -886,8 +900,9 @@
 }
 
 .cal__axis {
-  fill: var(--ink-muted);
+  fill: var(--ink-soft);
   font-size: 10px;
+  font-weight: 600;
   font-family: var(--font);
 }
 
@@ -923,8 +938,9 @@
   justify-content: flex-end;
   gap: 0.4rem;
   margin-top: 1rem;
-  color: var(--ink-muted);
+  color: var(--ink-soft);
   font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .cal__swatch {

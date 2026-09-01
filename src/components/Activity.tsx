@@ -11,9 +11,15 @@ const GAP = 3
 const STEP = CELL + GAP
 const LEFT_LABELS = 30 // room for Mon / Wed / Fri
 const TOP_LABELS = 18 // room for the month row
+/*
+ * Month labels are anchored at the first column of their month, so the final
+ * one ("Sep" in a calendar ending in September) would run past the right edge
+ * of the viewBox and be sliced in half. This reserves room for it.
+ */
+const RIGHT_LABEL_ROOM = 24
 
 const DAY_MS = 86_400_000
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
 
 interface Cell {
   /** Column (week) and row (weekday) in the grid. */
@@ -76,7 +82,7 @@ export function Activity() {
   const [hovered, setHovered] = useState<Cell | null>(null)
 
   const columns = cells.length > 0 ? cells[cells.length - 1].col + 1 : 0
-  const width = LEFT_LABELS + columns * STEP
+  const width = LEFT_LABELS + columns * STEP + RIGHT_LABEL_ROOM
   const height = TOP_LABELS + 7 * STEP
 
   /* One label per month, placed at the first column that month appears in. */
@@ -143,7 +149,7 @@ export function Activity() {
 
             {[1, 3, 5].map((row) => (
               <text key={row} className="cal__axis" x={0} y={TOP_LABELS + row * STEP + CELL - 1}>
-                {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][row]}
+                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][row]}
               </text>
             ))}
 

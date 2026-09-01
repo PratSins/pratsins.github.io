@@ -40,11 +40,11 @@
   /* Contribution graph — five steps from an empty day to the busiest.
      GitHub's green would fight the mustard, so this is a ramp of the site's
      own ink instead. Swap these for greens if you prefer the familiar look. */
-  --cal-0: rgba(36, 27, 6, 0.10);
-  --cal-1: rgba(36, 27, 6, 0.30);
-  --cal-2: rgba(36, 27, 6, 0.50);
-  --cal-3: rgba(36, 27, 6, 0.72);
-  --cal-4: rgba(36, 27, 6, 0.94);
+  --cal-0: rgba(36, 27, 6, 0.18);
+  --cal-1: rgba(36, 27, 6, 0.42);
+  --cal-2: rgba(36, 27, 6, 0.62);
+  --cal-3: rgba(36, 27, 6, 0.80);
+  --cal-4: rgba(36, 27, 6, 1);
 
   /* --- Type ----------------------------------------------------------- */
   --font: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
