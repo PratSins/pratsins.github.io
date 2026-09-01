@@ -24,7 +24,7 @@ export const portfolio: PortfolioData = {
     // role: 'AI Native Microservices Engineer',
     role: 'Backend & Applied ML Engineer',
     location: 'Bangalore',
-    avatar: '/images/avatar.svg',
+    avatar: '/images/avatar.jpeg',
     openToWork: true,
     openToWorkLabel: 'Open to work',
     currentRole: {
@@ -37,7 +37,7 @@ export const portfolio: PortfolioData = {
       // { kind: 'twitter', label: 'Twitter', href: 'https://x.com/yourhandle' },
       // Add more if you like — 'website' also has an icon:
       { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/pratsingh4069' },
-      { kind: 'leetcode', label: 'LeetCode', href: 'https://leetcode.com/u/yourhandle' },
+      { kind: 'leetcode', label: 'LeetCode', href: 'https://leetcode.com/u/pratyush2024/' },
       { kind: 'resume', label: 'Résumé', href: '/resume.pdf' },
     ],
   },
@@ -58,13 +58,20 @@ export const portfolio: PortfolioData = {
    * ------------------------------------------------------------------ */
   experience: [
     {
-      title: 'Senior Software Engineer',
-      company: 'Excellence Tech Solutions',
-      companyUrl: 'https://example.com',
-      start: 'March 2022',
+      title: 'Software Development Engineer(SDE) 1',
+      company: 'SellerApp',
+      companyUrl: 'https://www.sellerapp.com/',
+      start: 'January 2026',
       end: 'Present',
       description:
-        "Led the development of several key features for the company's flagship product. Mentored junior engineers and contributed to architectural decisions.",
+        `I excelled in developing and optimizing backend systems, achieving notable improvements in performance and cost efficiency.
+
+• Designed secure backend APIs following authentication, authorization, and secure coding best practices.
+• Built WebSocket-based real-time data collection pipelines for faster insights from multiple IP sources.
+• Automated workflows with Camunda-Zeebe, reducing manual effort by 40% and streamlining processes.
+• Designed a centralized logging architecture for real-time monitoring, enhancing debugging capabilities.
+• Leveraged AI-assisted development tools to improve development productivity, debugging, documentation, and code quality.
+• Developed unit and integration tests to ensure reliability and maintainability of backend services.`,
     },
     {
       title: 'Frontend Developer',
