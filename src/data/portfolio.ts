@@ -58,29 +58,34 @@ export const portfolio: PortfolioData = {
    * ------------------------------------------------------------------ */
   experience: [
     {
-      title: 'Software Development Engineer(SDE) 1',
+      title: 'Software Development Engineer (SDE-1)',
       company: 'SellerApp',
       companyUrl: 'https://www.sellerapp.com/',
       start: 'January 2026',
       end: 'Present',
       description:
-        `I excelled in developing and optimizing backend systems, achieving notable improvements in performance and cost efficiency.
-
-• Designed secure backend APIs following authentication, authorization, and secure coding best practices.
-• Built WebSocket-based real-time data collection pipelines for faster insights from multiple IP sources.
-• Automated workflows with Camunda-Zeebe, reducing manual effort by 40% and streamlining processes.
-• Designed a centralized logging architecture for real-time monitoring, enhancing debugging capabilities.
-• Leveraged AI-assisted development tools to improve development productivity, debugging, documentation, and code quality.
-• Developed unit and integration tests to ensure reliability and maintainability of backend services.`,
+        'Developed and Optimized Backend Systems, achieving notable improvements in performance and cost efficiency.',
+      highlights: [
+        'Built Real-time APIs to fetch Amazon SERP data',
+        'Designed secure backend APIs following authentication, authorization, and secure coding best practices.',
+        'Built WebSocket-based real-time data collection pipelines for faster insights from multiple IP sources.',
+        'Automated workflows with Camunda-Zeebe, reducing manual effort by 40% and streamlining processes.',
+        'Leveraged AI-assisted development tools to improve development productivity, debugging, documentation, and code quality.',
+        'Developed unit and integration tests to ensure reliability and maintainability of backend services.',
+      ],
     },
     {
-      title: 'Frontend Developer',
-      company: 'Tech Innovations',
-      companyUrl: 'https://example.com',
-      start: 'June 2020',
-      end: 'February 2022',
+      title: 'Backend Intern',
+      company: 'Nimblix Technologies',
+      companyUrl: '',
+      start: 'July 2025',
+      end: 'November 2025',
       description:
-        'Developed and maintained client websites and web applications. Worked closely with designers and project managers to deliver high-quality products.',
+        'Developed robust APIs and scalable backend applications using Java Spring Boot.',
+      highlights: [
+        'Developed robust APIs and scalable applications using Java Spring Boot for a client.',
+        'Collaborated with a dynamic team to store user data efficiently, ensuring data integrity and accessibility.',
+      ],
     },
   ],
 

@@ -53,7 +53,13 @@ export interface ExperienceItem {
   start: string
   /** Free text, e.g. "Present" */
   end: string
+  /** A sentence or two of context, shown above the bullets. */
   description: string
+  /**
+   * Bullet points, one string each — no "•" characters, the styling adds
+   * those. Leave it out entirely if the description says enough.
+   */
+  highlights?: string[]
 }
 
 export interface EducationItem {

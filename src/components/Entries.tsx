@@ -12,21 +12,31 @@ export function ExperienceList({ items }: { items: ExperienceItem[] }) {
       {items.map((item) => (
         <div key={`${item.company}-${item.title}`}>
           <article className="entry">
-            <h3 className="entry__title">
-              {item.companyUrl ? (
-                <a href={item.companyUrl} target="_blank" rel="noreferrer noopener">
-                  {item.title}
-                  <Icon name="arrowUpRight" size={18} />
-                </a>
-              ) : (
-                item.title
-              )}
-            </h3>
-            <p className="entry__org">{item.company}</p>
+            <h3 className="entry__title">{item.title}</h3>
+            {item.companyUrl ? (
+              <a
+                className="entry__org entry__org--link"
+                href={item.companyUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {item.company}
+                <Icon name="arrowUpRight" size={16} />
+              </a>
+            ) : (
+              <p className="entry__org">{item.company}</p>
+            )}
             <p className="entry__dates">
               {item.start} &ndash; {item.end}
             </p>
             <p className="entry__body">{item.description}</p>
+            {item.highlights && item.highlights.length > 0 && (
+              <ul className="entry__points">
+                {item.highlights.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            )}
           </article>
         </div>
       ))}
