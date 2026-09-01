@@ -68,6 +68,13 @@ function buildCells(source: Contributions): Cell[] {
   })
 }
 
+/** The viewer's local calendar date, expressed as UTC midnight so it can be
+ *  compared against the cell dates (which are UTC midnight too). */
+function todayAsUTC(): Date {
+  const now = new Date()
+  return new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()))
+}
+
 /** "8 contributions on Monday, March 9, 2026" */
 function describe(cell: Cell): string {
   const label = cell.date.toLocaleDateString('en-US', {
@@ -77,9 +84,30 @@ function describe(cell: Cell): string {
   return `${n} on ${label}`
 }
 
+/**
+ * Wording for the resting state — the most recent day we have data for.
+ *
+ * Reads "…today" or "…yesterday" when that applies, because a bare date for
+ * today is oddly formal. Anything older falls back to the same phrasing used
+ * on hover, so the two never look like different features.
+ */
+function describeLatest(cell: Cell): string {
+  const n =
+    cell.count === 0
+      ? 'No contributions'
+      : `${cell.count} contribution${cell.count === 1 ? '' : 's'}`
+  const daysAgo = Math.round((todayAsUTC().getTime() - cell.date.getTime()) / DAY_MS)
+  if (daysAgo === 0) return `${n} today`
+  if (daysAgo === 1) return `${n} yesterday`
+  return describe(cell)
+}
+
 export function Activity() {
   const cells = useMemo(() => buildCells(data), [])
   const [hovered, setHovered] = useState<Cell | null>(null)
+
+  /* The most recent day in the calendar — what the readout shows at rest. */
+  const latest = cells.length > 0 ? cells[cells.length - 1] : null
 
   const columns = cells.length > 0 ? cells[cells.length - 1].col + 1 : 0
   const width = LEFT_LABELS + columns * STEP + RIGHT_LABEL_ROOM
@@ -120,12 +148,13 @@ export function Activity() {
       </p>
 
       {/*
-        The day readout. It keeps its height whether or not anything is
-        hovered, so the grid below never jumps as the cursor moves across it.
+        The day readout. At rest it describes the most recent day; hovering
+        a square swaps in that day instead. It keeps a fixed height either
+        way, so the grid below never jumps as the cursor moves across it.
         aria-live means a screen reader announces the day you land on.
       */}
       <p className="cal__readout" aria-live="polite">
-        {hovered ? describe(hovered) : ''}
+        {hovered ? describe(hovered) : latest ? describeLatest(latest) : ''}
       </p>
 
       {/* The grid scrolls sideways on narrow screens rather than shrinking

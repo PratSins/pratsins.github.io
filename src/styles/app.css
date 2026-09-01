@@ -907,14 +907,11 @@
 }
 
 .cal__day {
-  transition: opacity var(--t-fast) var(--ease);
   outline: none;
 }
-.cal__grid:hover .cal__day {
-  opacity: 0.55;
-}
+
+/* The hovered day gets an outline. Colours stay put — nothing dims. */
 .cal__day:hover {
-  opacity: 1;
   stroke: var(--ink);
   stroke-width: 1.2;
 }
