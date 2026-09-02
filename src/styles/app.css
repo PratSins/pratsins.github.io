@@ -1011,3 +1011,31 @@
   height: 11px;
   border-radius: 2.5px;
 }
+
+/*
+ * Education card header: school on the left, location pushed to the right.
+ * It wraps rather than squashing when the card gets narrow, so a long school
+ * name and a long location never collide.
+ */
+.entry__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.25rem;
+}
+
+.entry__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.entry__location svg {
+  flex: none;
+  opacity: 0.85;
+}

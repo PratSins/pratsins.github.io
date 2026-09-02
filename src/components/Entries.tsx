@@ -50,14 +50,23 @@ export function EducationList({ items }: { items: EducationItem[] }) {
       {items.map((item) => (
         <div key={item.school + item.start}>
           <article className="entry">
-            <h3 className="entry__title">{item.school}</h3>
+            {/* School on the left, location pushed to the far right. */}
+            <div className="entry__head">
+              <h3 className="entry__title">{item.school}</h3>
+              {item.location && (
+                <p className="entry__location">
+                  <Icon name="mapPin" size={15} />
+                  {item.location}
+                </p>
+              )}
+            </div>
+            {/* The degree gets the same pill as a company name in Experience,
+                so the two sections read as the same kind of card. */}
+            <p className="entry__org">{item.degree}</p>
             <p className="entry__dates">
               {item.start} &ndash; {item.end}
             </p>
-            <p className="entry__body">
-              {item.degree}
-              {item.description ? `. ${item.description}` : ''}
-            </p>
+            {item.description && <p className="entry__body">{item.description}</p>}
           </article>
         </div>
       ))}

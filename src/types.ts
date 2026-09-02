@@ -64,6 +64,8 @@ export interface ExperienceItem {
 
 export interface EducationItem {
   school: string
+  /** Shown on the right of the card, opposite the school name. Optional. */
+  location?: string
   start: string
   end: string
   degree: string

@@ -83,8 +83,8 @@ export const portfolio: PortfolioData = {
       description:
         'Developed robust APIs and scalable backend applications using Java Spring Boot.',
       highlights: [
-        'Developed robust APIs and scalable applications using Java Spring Boot for a client.',
-        'Collaborated with a dynamic team to store user data efficiently, ensuring data integrity and accessibility.',
+        'Developed robust APIs and scalable applications using Java Spring Boot',
+        'Collaborated with a dynamic team to store user data efficiently, ensuring data integrity and accessibility',
       ],
     },
   ],
@@ -170,18 +170,20 @@ export const portfolio: PortfolioData = {
    * ------------------------------------------------------------------ */
   education: [
     {
-      school: 'Stanford University',
-      start: '2019',
-      end: '2021',
-      degree: 'Master of Science in Computer Science',
+      school: 'Indian Institute of Information Technology, Sri City',
+      location: 'Chittoor, Andhra Pradesh',
+      start: '2021',
+      end: '2025',
+      degree: 'B.Tech in Computer Science & Engineering',
+      description:
+        'Relevant Coursework: Data Structures & Algorithms, Distributed Systems, Databases, Machine Learning, Operating Systems, and Computer Networks.',
     },
     {
-      school: 'Arizona State University',
-      start: '2014',
-      end: '2018',
-      degree: 'Bachelor of Science in Information Technology',
-      description:
-        'My relevant coursework included Data Structures and Algorithms, Object-Oriented Programming, Web Development, Database Management, Software Engineering Principles, and Operating Systems.',
+      school: 'Don Bosco School, Liluah',
+      location: 'Howrah, West Bengal',
+      start: 'Graduated in',
+      end: '2020',
+      degree: 'ISC',
     },
   ],
 
