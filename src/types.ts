@@ -70,6 +70,12 @@ export interface EducationItem {
   end: string
   degree: string
   description?: string
+  /**
+   * Subjects, one per entry — rendered as chips rather than a comma-run.
+   * A list of six subjects reads as a wall of text in a sentence; as chips
+   * it scans in a glance.
+   */
+  coursework?: string[]
 }
 
 export type ProjectStatus = 'live' | 'coming-soon' | 'archived'

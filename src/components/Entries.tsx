@@ -67,6 +67,18 @@ export function EducationList({ items }: { items: EducationItem[] }) {
               {item.start} &ndash; {item.end}
             </p>
             {item.description && <p className="entry__body">{item.description}</p>}
+            {item.coursework && item.coursework.length > 0 && (
+              <div className="entry__course">
+                <p className="entry__course-label">Relevant coursework</p>
+                <ul className="tags">
+                  {item.coursework.map((subject) => (
+                    <li className="tag" key={subject}>
+                      {subject}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </article>
         </div>
       ))}

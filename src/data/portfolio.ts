@@ -175,8 +175,14 @@ export const portfolio: PortfolioData = {
       start: '2021',
       end: '2025',
       degree: 'B.Tech in Computer Science & Engineering',
-      description:
-        'Relevant Coursework: Data Structures & Algorithms, Distributed Systems, Databases, Machine Learning, Operating Systems, and Computer Networks.',
+      coursework: [
+        'Data Structures & Algorithms',
+        'Distributed Systems',
+        'Databases',
+        'Machine Learning',
+        'Operating Systems',
+        'Computer Networks',
+      ],
     },
     {
       school: 'Don Bosco School, Liluah',

@@ -1039,3 +1039,18 @@
   flex: none;
   opacity: 0.85;
 }
+
+/* Coursework chips on an education card. Reuses .tags/.tag from the project
+   cards so the chip language stays consistent across the site. */
+.entry__course {
+  margin-top: 1.1rem;
+}
+
+.entry__course-label {
+  margin-bottom: 0.7rem;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
