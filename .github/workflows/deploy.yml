@@ -1,0 +1,69 @@
+name: Deploy to GitHub Pages
+
+on:
+  # The site changes when you publish a release, and not before.
+  release:
+    types: [published]
+  # Daily, purely to republish a fresh GitHub contribution graph.
+  # Cron is UTC: 04:30 UTC == 10:00 IST.
+  schedule:
+    - cron: '30 4 * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race each other.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # Fetches your contribution calendar into src/data/contributions.json.
+      #
+      # Nothing is committed — the data is fetched and published in the same
+      # run. That avoids a daily "update contributions" commit, which would
+      # land even on days you wrote no code, because the script stamps a
+      # fresh `generatedAt` every time it runs.
+      #
+      # `|| echo` on purpose: the script exits non-zero when GitHub is
+      # unreachable or the token has expired. Without it, a bad minute at
+      # GitHub would fail the whole deploy. Instead the build carries on with
+      # the JSON committed in the repo — a stale graph beats no site.
+      - name: Refresh contribution graph
+        env:
+          GH_CONTRIB_TOKEN: ${{ secrets.GH_CONTRIB_TOKEN }}
+        run: npm run contributions || echo "::warning::Contribution fetch failed — building with the committed data instead"
+
+      # build:gh copies index.html to 404.html. GitHub Pages has no rewrite
+      # rules, so that copy is what makes /projects/<slug> survive a refresh:
+      # Pages serves 404.html, and the router takes it from there.
+      - run: npm run build:gh
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -106,30 +106,65 @@ whole thing.
 
 ## Deploying
 
-`npm run build` writes a plain static site to `dist/`. Upload that anywhere.
+The site is hosted on **GitHub Pages** at <https://pratsins.github.io>.
 
-Because project pages use real URLs (`/projects/frameverse`) rather than
-`#hash` ones, **the host must send unknown paths to `index.html`** — otherwise
-refreshing a project page gives a 404.
+Deployment is handled by `.github/workflows/deploy.yml`, which runs on two
+triggers:
 
-| Host | What's needed | Status |
-|---|---|---|
-| **Cloudflare Workers** | `wrangler.jsonc` | ✅ included — current host |
-| **Vercel** | `vercel.json` | ✅ included |
-| **Netlify** | a `public/_redirects` holding `/*  /index.html  200` | add if you switch |
-| **GitHub Pages** | a `404.html` copy | run `npm run build:gh` |
+- **When a GitHub Release is published** — this is how site changes go live.
+  Pushing to `main` deploys nothing.
+- **Daily at 10:00 IST** (`30 4 * * *`, cron is UTC) — this exists only to
+  republish a fresh GitHub contribution graph. Without it the Activity
+  section would freeze at whatever it looked like on your last release.
 
-On Cloudflare this is `not_found_handling: "single-page-application"` in
-`wrangler.jsonc`. Note that Cloudflare **rejects** the Netlify-style
-`/*  /index.html  200` catch-all — it reports it as an infinite loop, because
-Workers already does the fallback natively. So that file must not exist while
-you deploy here.
+### Publishing a new version
+
+1. Push your work to `main` as usual.
+2. GitHub → **Releases** → **Draft a new release**.
+3. Create a tag (e.g. `v1.1.0`), give it a title, and hit **Publish release**.
+4. Watch it under the **Actions** tab. Live in a couple of minutes.
+
+The workflow does three things: refreshes your GitHub contribution graph,
+builds the site, and publishes it. If the contribution fetch fails — GitHub
+unreachable, token expired — it logs a warning and builds with the JSON
+committed in the repo, so a bad minute at GitHub can never take the site down.
+
+### One-time setup
+
+| What | Where |
+|---|---|
+| Repo named `PratSins.github.io` | Settings → rename (must match your username) |
+| `GH_CONTRIB_TOKEN` secret | Settings → Secrets and variables → Actions |
+| Pages source set to **GitHub Actions** | Settings → Pages |
+
+### Why `build:gh` and not `build`
+
+GitHub Pages has no rewrite rules, so a real URL like `/projects/frameverse`
+would 404 on a refresh. `npm run build:gh` copies `index.html` to `404.html`;
+Pages serves that for unknown paths and the router takes over from there.
+
+One side effect: those pages return an HTTP **404 status** even though they
+render correctly. Harmless for visitors, slightly worse for search engines.
+
+### Moving to another host
+
+`npm run build` writes a plain static site to `dist/` that will run anywhere,
+but each host needs its own way of sending unknown paths to `index.html`:
+
+| Host | What to add |
+|---|---|
+| **Netlify** | `public/_redirects` containing `/*  /index.html  200` |
+| **Vercel** | `vercel.json` with a rewrite of `/(.*)` to `/index.html` |
+| **Cloudflare Workers** | `wrangler.jsonc` with `assets.not_found_handling: "single-page-application"` |
+
+Note that Cloudflare **rejects** the Netlify-style `/*  /index.html  200`
+catch-all, reporting it as an infinite loop — Workers does the fallback
+natively, so that file must not exist there.
 
 ### Custom domain
 
-Buy the domain, then point it at your host — each of the above has a
-"Custom domain" panel that tells you the exact DNS records to add. It's two
-records and about ten minutes.
+Buy the domain, then Settings → Pages → **Custom domain**. GitHub tells you
+the exact DNS records; it's a handful of records and about ten minutes.
 
 ---
 
