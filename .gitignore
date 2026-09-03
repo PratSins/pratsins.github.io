@@ -12,3 +12,6 @@ node_modules/.tmp
 # The GitHub token for the contributions graph lives here.
 .env
 .env.local
+
+# Wrangler build artefacts
+.wrangler

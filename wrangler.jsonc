@@ -1,0 +1,19 @@
+{
+  // Cloudflare Worker config for this site.
+  //
+  // Committed on purpose: without it, `wrangler deploy` re-guesses the setup
+  // on every build and answers its own prompts with non-interactive defaults.
+  // Pinning it here makes each deploy identical to the last.
+  "name": "pratyushs",
+  "compatibility_date": "2026-09-03",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    // Any unknown path serves index.html, so /projects/frameverse survives a
+    // refresh. This replaces the public/_redirects file — Workers rejects the
+    // "/* /index.html 200" catch-all as an infinite loop, because it already
+    // does this natively.
+    "not_found_handling": "single-page-application"
+  }
+}

@@ -108,18 +108,22 @@ whole thing.
 
 `npm run build` writes a plain static site to `dist/`. Upload that anywhere.
 
-Because project pages use real URLs (`/projects/ecommerce-platform`) rather
-than `#hash` ones, **the host must send unknown paths to `index.html`** —
-otherwise refreshing a project page gives a 404. Config for that is already
-included:
+Because project pages use real URLs (`/projects/frameverse`) rather than
+`#hash` ones, **the host must send unknown paths to `index.html`** — otherwise
+refreshing a project page gives a 404.
 
 | Host | What's needed | Status |
 |---|---|---|
-| **Netlify** | `public/_redirects` | ✅ included |
+| **Cloudflare Workers** | `wrangler.jsonc` | ✅ included — current host |
 | **Vercel** | `vercel.json` | ✅ included |
-| **Cloudflare Pages** | works out of the box | ✅ |
+| **Netlify** | a `public/_redirects` holding `/*  /index.html  200` | add if you switch |
+| **GitHub Pages** | a `404.html` copy | run `npm run build:gh` |
 
-All 3 have a free tier that covers a portfolio comfortably.
+On Cloudflare this is `not_found_handling: "single-page-application"` in
+`wrangler.jsonc`. Note that Cloudflare **rejects** the Netlify-style
+`/*  /index.html  200` catch-all — it reports it as an infinite loop, because
+Workers already does the fallback natively. So that file must not exist while
+you deploy here.
 
 ### Custom domain
 
