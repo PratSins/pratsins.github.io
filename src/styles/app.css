@@ -1092,3 +1092,57 @@
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
+
+/* ============================================================================
+ * CERTIFICATIONS
+ * ========================================================================== */
+.certs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cert {
+  display: flex;
+  gap: 1rem;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+  border-radius: var(--radius);
+  background: var(--glass);
+  border: 1px solid var(--hairline);
+  transition: background var(--t-med) var(--ease),
+    border-color var(--t-med) var(--ease),
+    translate var(--t-med) var(--ease);
+}
+.cert:hover {
+  background: var(--glass-hover);
+  border-color: var(--hairline-strong);
+  translate: 0 -3px;
+}
+
+.cert__badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--glass-sunk);
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+}
+
+.cert__name {
+  font-size: 1.06rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cert__issuer {
+  margin-top: 0.3rem;
+  color: var(--ink-muted);
+  font-size: 0.94rem;
+}
+
+.cert__link {
+  margin-top: 0.75rem;
+}

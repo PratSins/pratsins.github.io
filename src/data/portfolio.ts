@@ -142,25 +142,53 @@ export const portfolio: PortfolioData = {
       },
     },
     {
-      slug: 'lorem-management-platform',
-      title: 'Lorem Management Platform',
-      category: 'Startup',
-      date: '2026-02-17',
-      status: 'coming-soon',
-      image: '/images/projects/project-two.svg',
-      imageAlt: 'Laptop showing the Lorem Management Platform dashboard',
-      tags: ['Python', 'ML', 'AI', 'Docker'],
+      slug: 'frameverse',
+      title: 'FrameVerse',
+      category: 'Computer Vision & GenAI',
+      date: '2026-08-28',
+      status: 'live',
+      image: '/images/projects/frameverse.svg',
+      imageAlt: 'FrameVerse — real-time finger frame gesture tracking with AI video restyling',
+      tags: [
+        'Go',
+        'React 19',
+        'TypeScript',
+        'Google Cloud',
+        'Vertex AI',
+        'MongoDB',
+        'MediaPipe',
+        'Canvas 2D',
+      ],
       summary:
-        'An internal tool that turns messy operational data into a single dashboard the whole team can act on.',
-      links: [{ label: 'Website', href: 'https://example.com', kind: 'website' }],
+        'An interactive AI video transformation platform that turns finger gestures into a live window to stylized animated worlds (Anime, 3D CGI, Pixar) using MediaPipe and Gemini Omni Flash on Vertex AI.',
+      links: [
+        {
+          label: 'Source',
+          href: 'https://github.com/PratSins/FrameVerse-Backend',
+          kind: 'github',
+        },
+      ],
       detail: {
         intro:
-          'A second example, so you can see what two project pages look like side by side.',
+          'FrameVerse bridges real-time computer vision and multimodal generative AI by turning a two-handed "L" finger-frame gesture into a dynamic portal displaying AI-stylized animated worlds.',
         sections: [
           {
-            heading: 'Overview',
+            heading: 'The concept',
             body: [
-              'Swap this out for the real write-up whenever you are ready. Until then it keeps the page from looking empty.',
+              'Traditional video stylization models restyle full frames indiscriminately. FrameVerse recreates the viral "AI world inside a finger frame" effect: the real person and environment stay untouched outside the gesture, while the area inside the fingertip boundary dynamically reveals the AI-stylized universe.',
+            ],
+          },
+          {
+            heading: 'Architecture & pipeline',
+            body: [
+              'The frontend runs MediaPipe Hand Landmarker in the browser (via WebAssembly & WebGL) to track 21 hand landmarks, detects the dual-hand "L" gesture across index and thumb tips, and applies velocity-adaptive exponential smoothing and teleport rejection to maintain a stable 4-point quadrilateral.',
+              'Video restyling is powered by Google Cloud Vertex AI (Gemini Omni Flash) with pixel-alignment prompts ensuring matching head poses, facial expressions, and camera geometry. A Go (Chi) backend orchestrates GCS V4 Signed URLs for direct browser-to-cloud streaming and coordinates job state in a Kubernetes-deployed MongoDB cluster on GKE.',
+            ],
+          },
+          {
+            heading: 'Dual-video composition & export',
+            body: [
+              'An HTML5 Canvas 2D engine synchronizes the original and AI-stylized video streams frame-by-frame, clipping the stylized layer strictly within the dynamic finger polygon while drawing animated dashed borders and glowing corner dots. The final composite can be exported locally in real time as MP4 or WebM via MediaRecorder without server transcoding overhead.',
             ],
           },
         ],
@@ -193,6 +221,30 @@ export const portfolio: PortfolioData = {
       start: 'Graduated in',
       end: '2020',
       degree: 'ISC',
+    },
+  ],
+
+  /* --------------------------------------------------------------------
+   * 5b. CERTIFICATIONS
+   *
+   * `href` is the credential / verification link. Omit it and the card
+   * renders as plain text — better than a link that goes nowhere.
+   * ------------------------------------------------------------------ */
+  certifications: [
+    {
+      name: 'Machine Learning Specialization',
+      issuer: 'Andrew Ng · DeepLearning.AI',
+      href: 'https://www.coursera.org/account/accomplishments/specialization/8SUVNYQSV6AU',
+    },
+    {
+      name: 'Web Development Bootcamp',
+      issuer: 'Angela Yu · Udemy',
+      href: 'https://www.udemy.com/certificate/UC-4203db48-1a45-469b-9b8a-617c912aca93/',
+    },
+    {
+      name: 'Google Cloud Certified Professional Program',
+      issuer: 'Google Cloud',
+      href: 'https://www.skills.google/public_profiles/ef6fab07-cd91-4bcc-bb60-a57b0be7714b',
     },
   ],
 
@@ -241,24 +293,7 @@ export const portfolio: PortfolioData = {
   /* --------------------------------------------------------------------
    * 7. BLOG / WRITING  — links out, or to your own pages
    * ------------------------------------------------------------------ */
-  blog: [
-    {
-      title: 'How I built this portfolio',
-      description:
-        'A short write-up of the stack and the decisions behind this site. Point this anywhere — your blog, dev.to, Medium, or a page in this project.',
-      href: 'https://example.com/blog/post',
-      date: '2026-01-12',
-      external: true,
-    },
-    {
-      title: 'Notes on running LLMs in production',
-      description:
-        'Second placeholder post, so you can see how a list of them stacks up. Swap the title, date and link for something real whenever you are ready.',
-      href: 'https://example.com/blog/second-post',
-      date: '2026-02-04',
-      external: true,
-    },
-  ],
+  blog: [],
 
   /* --------------------------------------------------------------------
    * 8. TOP BAR
@@ -272,12 +307,12 @@ export const portfolio: PortfolioData = {
    * ------------------------------------------------------------------ */
   nav: [
     { id: 'home', label: 'Home', icon: 'home' },
+    { id: 'education', label: 'Education', icon: 'graduation' },
     { id: 'experience', label: 'Experience', icon: 'briefcase' },
     { id: 'projects', label: 'Projects', icon: 'code' },
-    { id: 'education', label: 'Education', icon: 'graduation' },
     { id: 'skills', label: 'Skills', icon: 'wrench' },
+    { id: 'certifications', label: 'Certifications', icon: 'award' },
     { id: 'activity', label: 'Activity', icon: 'activity' },
-    { id: 'blog', label: 'Blog', icon: 'link' },
   ],
 
   /* --------------------------------------------------------------------

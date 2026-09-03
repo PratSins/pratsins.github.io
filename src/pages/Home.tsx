@@ -3,6 +3,7 @@ import { Section } from '../components/Section'
 import { ExperienceList, EducationList } from '../components/Entries'
 import { ProjectCard } from '../components/ProjectCard'
 import { Skills } from '../components/Skills'
+import { Certifications } from '../components/Certifications'
 import { Activity } from '../components/Activity'
 import { BlogList } from '../components/Blog'
 import { portfolio } from '../data/portfolio'
@@ -15,7 +16,8 @@ import { portfolio } from '../data/portfolio'
  * heading behind. The top bar hides its link to match (see App.tsx).
  */
 export function Home() {
-  const { profile, about, experience, projects, education, skills, blog } = portfolio
+  const { profile, about, experience, projects, education, certifications, skills, blog } =
+    portfolio
 
   return (
     <main id="main" className="container">
@@ -41,6 +43,12 @@ export function Home() {
         )}
       </section>
 
+      {education.length > 0 && (
+        <Section id="education" title="Education">
+          <EducationList items={education} />
+        </Section>
+      )}
+
       {experience.length > 0 && (
         <Section id="experience" title="Experience">
           <ExperienceList items={experience} />
@@ -57,15 +65,15 @@ export function Home() {
         </Section>
       )}
 
-      {education.length > 0 && (
-        <Section id="education" title="Education">
-          <EducationList items={education} />
-        </Section>
-      )}
-
       {skills.length > 0 && (
         <Section id="skills" title="Skills">
           <Skills groups={skills} />
+        </Section>
+      )}
+
+      {certifications.length > 0 && (
+        <Section id="certifications" title="Certifications">
+          <Certifications items={certifications} />
         </Section>
       )}
 

@@ -50,6 +50,7 @@ export function App() {
     if (portfolio.experience.length) present.add('experience')
     if (portfolio.projects.length) present.add('projects')
     if (portfolio.education.length) present.add('education')
+    if (portfolio.certifications.length) present.add('certifications')
     if (portfolio.skills.length) present.add('skills')
     present.add('activity')
     if (portfolio.blog.length) present.add('blog')

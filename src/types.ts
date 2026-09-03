@@ -125,6 +125,19 @@ export interface BlogPost {
   external?: boolean
 }
 
+export interface Certification {
+  name: string
+  /** Who issued or taught it — DeepLearning.AI, Google Cloud, Udemy… */
+  issuer: string
+  /**
+   * Credential / verification URL. Leave it out and the card renders as
+   * plain text — better than a link that goes nowhere.
+   */
+  href?: string
+  /** Free text, e.g. "2024". Optional. */
+  date?: string
+}
+
 export interface SkillItem {
   name: string
   /**
@@ -153,6 +166,7 @@ export interface PortfolioData {
   experience: ExperienceItem[]
   projects: Project[]
   education: EducationItem[]
+  certifications: Certification[]
   skills: SkillGroup[]
   blog: BlogPost[]
   nav: NavItem[]

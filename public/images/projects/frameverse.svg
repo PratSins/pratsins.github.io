@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img"
+     aria-label="FrameVerse — two hands framing a face, with a dashed selection box tracking it">
+  <defs>
+    <linearGradient id="wall" x1="0.2" y1="0" x2="0.85" y2="1">
+      <stop offset="0%" stop-color="#dcd6cf"/><stop offset="100%" stop-color="#b4aba3"/>
+    </linearGradient>
+    <linearGradient id="tee" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfaf8"/><stop offset="100%" stop-color="#e4e0da"/>
+    </linearGradient>
+    <!-- one hand, reused mirrored. Fingers are stroked capsules: a thick dark
+         pass for the outline, a thinner skin pass on top. The fist is drawn
+         last so it covers where the fingers join. -->
+    <g id="hand">
+      <path d="M198 428 L314 322" stroke="#2f2a27" stroke-width="42" stroke-linecap="round" fill="none"/>
+      <path d="M198 428 L320 492" stroke="#2f2a27" stroke-width="38" stroke-linecap="round" fill="none"/>
+      <path d="M198 428 L314 322" stroke="#f2ddd0" stroke-width="35" stroke-linecap="round" fill="none"/>
+      <path d="M198 428 L320 492" stroke="#f2ddd0" stroke-width="31" stroke-linecap="round" fill="none"/>
+      <rect x="120" y="372" width="132" height="116" rx="42" fill="#f2ddd0" stroke="#2f2a27" stroke-width="3.4"/>
+      <g stroke="#2f2a27" stroke-width="2.4" fill="none" opacity="0.55">
+        <path d="M156 398v26M190 394v30M224 398v26"/>
+      </g>
+    </g>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#wall)"/>
+
+  <!-- ===== subject ===== -->
+  <g stroke="#2f2a27" stroke-width="3.4" stroke-linejoin="round">
+    <!-- neck, tucked behind the shirt -->
+    <path d="M566 386 h68 v142 h-68 Z" fill="#e6cbba"/>
+    <!-- torso -->
+    <path d="M268 750 C 278 660 318 602 408 574 L 566 520 L 634 520 L 792 574
+             C 882 602 922 660 932 750 Z" fill="url(#tee)"/>
+      <path d="M568 522 q32 28 64 0" fill="none" stroke="#2f2a27" stroke-width="3" opacity="0.5"/>
+  </g>
+  <g stroke="#2f2a27" stroke-width="3.4" stroke-linejoin="round">
+    <!-- hair behind the face -->
+    <path d="M600 146 c -120 0 -156 84 -152 160 c 2 46 10 96 23 128 c 9 21 24 17 21 -5
+             c -7 -62 -3 -108 8 -141 c 62 31 138 31 200 0 c 11 33 15 79 8 141
+             c -3 22 12 26 21 5 c 13 -32 21 -82 23 -128 c 4 -76 -32 -160 -152 -160 Z" fill="#332a29"/>
+    <!-- face -->
+    <path d="M600 212 c 62 0 93 40 93 101 c 0 67 -41 117 -93 117 c -52 0 -93 -50 -93 -117
+             c 0 -61 31 -101 93 -101 Z" fill="#f4e0d3"/>
+  </g>
+
+  <!-- features -->
+  <g stroke="#2f2a27" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M534 282 q32 -19 62 -5M666 282 q-32 -19 -62 -5"/>
+    <path d="M600 322 v30 q-10 9 -18 11"/>
+    <path d="M576 386 q24 17 48 0"/>
+  </g>
+  <g>
+    <ellipse cx="566" cy="312" rx="25" ry="22" fill="#f9f5f2" stroke="#2f2a27" stroke-width="3"/>
+    <ellipse cx="634" cy="312" rx="25" ry="22" fill="#f9f5f2" stroke="#2f2a27" stroke-width="3"/>
+    <circle cx="568" cy="313" r="13" fill="#2b2422"/><circle cx="636" cy="313" r="13" fill="#2b2422"/>
+    <circle cx="573" cy="307" r="4.5" fill="#ffffff"/><circle cx="641" cy="307" r="4.5" fill="#ffffff"/>
+  </g>
+
+  <!-- ===== framing hands ===== -->
+  <use href="#hand"/>
+  <use href="#hand" transform="translate(1200 0) scale(-1 1)"/>
+
+  <!-- ===== selection box, corners at the fingertips ===== -->
+  <path d="M320 316 L880 306 L886 500 L326 494 Z"
+        fill="none" stroke="#ffffff" stroke-width="3.2" stroke-dasharray="15 11" opacity="0.96"/>
+  <g fill="#ffffff" stroke="#2f2a27" stroke-width="2.6">
+    <circle cx="320" cy="316" r="11"/><circle cx="880" cy="306" r="11"/>
+    <circle cx="886" cy="500" r="11"/><circle cx="326" cy="494" r="11"/>
+  </g>
+</svg>
