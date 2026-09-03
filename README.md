@@ -7,7 +7,7 @@ A fast, single-page portfolio site with a mustard "artisan" theme, built with
 
 ## Running it
 
-You need [Node.js](https://nodejs.org) 24 or newer.
+You need [Node.js](https://nodejs.org) 24+.
 
 ```bash
 npm install     # once, to download dependencies
