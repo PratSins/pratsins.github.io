@@ -10,6 +10,9 @@
     "enabled": true
   },
   "assets": {
+    // Where `npm run build` puts the site. Required — wrangler only infers
+    // this when the Cloudflare Vite plugin generates the config for you.
+    "directory": "./dist",
     // Any unknown path serves index.html, so /projects/frameverse survives a
     // refresh. This replaces the public/_redirects file — Workers rejects the
     // "/* /index.html 200" catch-all as an infinite loop, because it already
