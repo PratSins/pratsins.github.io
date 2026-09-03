@@ -48,26 +48,28 @@ export function ProjectDetail() {
         All projects
       </Link>
 
-      <div>
-        <h1 className="detail__title">{project.title}</h1>
-        <p className="detail__meta">
-          <span>{project.category}</span>
-          <span aria-hidden="true">&middot;</span>
-          <time dateTime={project.date}>{project.date}</time>
-        </p>
+      {/* Title block on the left, thumbnail on the right. Collapses to a
+          single stacked column when there is no room for two. */}
+      <div className="detail__head">
+        <div>
+          <h1 className="detail__title">{project.title}</h1>
+          <p className="detail__meta">
+            <span>{project.category}</span>
+            <span aria-hidden="true">&middot;</span>
+            <time dateTime={project.date}>{project.date}</time>
+          </p>
 
-        {project.tags.length > 0 && (
-          <ul className="tags" style={{ marginTop: '1.25rem' }} aria-label="Technologies used">
-            {project.tags.map((tag) => (
-              <li className="tag" key={tag}>
-                {tag}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+          {project.tags.length > 0 && (
+            <ul className="tags" style={{ marginTop: '1.25rem' }} aria-label="Technologies used">
+              {project.tags.map((tag) => (
+                <li className="tag" key={tag}>
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      <div>
         <figure className="detail__hero">
           <img src={project.image} alt={project.imageAlt} loading="eager" decoding="async" />
         </figure>

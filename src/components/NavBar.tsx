@@ -24,6 +24,13 @@ export function NavBar({ items }: NavBarProps) {
   const { pathname } = useLocation()
   const onHome = pathname === '/'
 
+  /*
+   * On a sub-page the scroll spy has no sections to watch, so nothing would be
+   * highlighted at all. Map the route back to the section it came from —
+   * /projects/anything is still "Projects" as far as a reader is concerned.
+   */
+  const routeSection = pathname.startsWith('/projects') ? 'projects' : null
+
   // Memoised so the observer inside useScrollSpy isn't torn down every render.
   const ids = useMemo(() => items.map((item) => item.id), [items])
   const activeId = useScrollSpy(ids)
@@ -50,7 +57,12 @@ export function NavBar({ items }: NavBarProps) {
               {content}
             </a>
           ) : (
-            <Link key={item.id} className="topbar__link" to={`/#${item.id}`}>
+            <Link
+              key={item.id}
+              className="topbar__link"
+              to={`/#${item.id}`}
+              aria-current={routeSection === item.id ? 'true' : undefined}
+            >
               {content}
             </Link>
           )

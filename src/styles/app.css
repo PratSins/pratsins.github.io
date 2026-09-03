@@ -358,7 +358,6 @@
   color: var(--ink-soft);
   font-size: clamp(1rem, 1.15vw, 1.08rem);
   line-height: 1.85;
-  max-width: 68ch;
 }
 .prose p + p {
   margin-top: 1.15rem;
@@ -495,15 +494,24 @@
 /* ============================================================================
  * PROJECTS
  * ========================================================================== */
+/*
+ * Projects stack as full-width rows rather than sitting in a grid of columns.
+ *
+ * A grid forces every card to the height of the tallest in its row, so two
+ * projects with different amounts of text look mismatched, and an odd number
+ * leaves a hole in the last row. One row per project sidesteps both, and the
+ * list stays even however many you add.
+ */
 .projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  display: flex;
+  flex-direction: column;
   gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .project {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* Image column, then everything else. */
+  grid-template-columns: minmax(240px, 340px) 1fr;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--glass);
@@ -522,11 +530,28 @@
   box-shadow: 0 16px 38px rgba(36, 27, 6, 0.22);
 }
 
+/*
+ * The image fills the left column edge to edge. It takes its height from the
+ * row rather than from its own aspect ratio, so the picture and the text
+ * always end level — min-height keeps it from being squashed when a project
+ * has very little text.
+ */
 .project__media {
   position: relative;
-  aspect-ratio: 16 / 10;
   overflow: hidden;
+  min-height: 240px;
   background: var(--glass-sunk);
+}
+
+/* Below this there is no room for two columns; the image goes on top. */
+@media (max-width: 760px) {
+  .project {
+    grid-template-columns: 1fr;
+  }
+  .project__media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
 }
 
 .project__img {
@@ -574,9 +599,9 @@
 .project__body {
   display: flex;
   flex-direction: column;
-  flex: 1;
   gap: 0.85rem;
-  padding: clamp(1.1rem, 2vw, 1.6rem);
+  /* Roomier than the old vertical card — the text has a whole row now. */
+  padding: clamp(1.25rem, 2.4vw, 2rem);
 }
 
 .project__meta {
@@ -746,8 +771,21 @@
   color: var(--ink-muted);
 }
 
+/*
+ * Title block and thumbnail sit side by side. auto-fit does the responsive
+ * work with no media query: two columns while both fit at 340px, one stacked
+ * column below that.
+ */
+.detail__head {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 5vw, 3.25rem);
+}
+
+/* The grid column now sets the width, so the image needs no cap of its own. */
 .detail__hero {
-  margin-block: clamp(1.75rem, 4vw, 2.75rem);
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--hairline);
@@ -755,12 +793,12 @@
 }
 .detail__hero img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  /* Matches the artwork's own ratio, so nothing gets cropped away. */
+  aspect-ratio: 16 / 10;
   object-fit: cover;
 }
 
 .detail__intro {
-  max-width: 70ch;
   color: var(--ink);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   line-height: 1.75;

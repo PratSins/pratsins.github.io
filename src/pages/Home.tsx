@@ -51,9 +51,7 @@ export function Home() {
         <Section id="projects" title="Projects" count={projects.length}>
           <div className="projects">
             {projects.map((project) => (
-              <div key={project.slug}>
-                <ProjectCard project={project} />
-              </div>
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </Section>

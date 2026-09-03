@@ -4,26 +4,37 @@ import { useEffect, useState } from 'react'
  * Returns the id of the section you are currently looking at, so the top bar
  * can highlight the matching link.
  *
- * The rule is deliberately simple: the active section is the LAST one whose
- * top edge has scrolled above the sticky bar. So the moment a heading tucks
- * under the bar, its tab lights up — no scrolling past it first.
+ * The rule: the active section is the LAST one whose top edge has scrolled
+ * above the sticky bar. The moment a heading tucks under the bar, its tab
+ * lights up.
  *
- * IntersectionObserver is used only as a cheap trigger for "something moved,
- * re-check". The decision itself reads live positions, because an observer
- * entry's boundingClientRect is a snapshot from whenever it last fired and
- * goes stale as you keep scrolling.
+ * This deliberately uses a scroll listener rather than IntersectionObserver.
+ * An observer only fires when a section crosses the edge of its observation
+ * band, and that is a *different moment* from when a heading passes under the
+ * bar — so between the two the highlight goes stale and lags behind the page.
+ * The listener is throttled to one check per animation frame, and each check
+ * is a handful of getBoundingClientRect() reads, so the cost is negligible.
  */
 export function useScrollSpy(ids: string[], offset = 96): string {
-  const [spyId, setSpyId] = useState(ids[0] ?? '')
-  const [atBottom, setAtBottom] = useState(false)
+  const [activeId, setActiveId] = useState(ids[0] ?? '')
 
   useEffect(() => {
     if (ids.length === 0) return
 
-    /* Sections sit flush against each other, so exactly one of them owns the
-       line just under the bar. Walking in document order, the last one whose
-       top has crossed that line is the one on screen. */
     const pick = () => {
+      /*
+       * Bottom of the page first: a short final section can never reach the
+       * line, because the page runs out of room to scroll. Without this the
+       * last tab could never activate.
+       */
+      const scrollBottom = window.scrollY + window.innerHeight
+      if (scrollBottom >= document.documentElement.scrollHeight - 2) {
+        setActiveId(ids[ids.length - 1])
+        return
+      }
+
+      // Sections sit flush against each other, so exactly one owns the line
+      // just under the bar. Walking in order, the last one past it wins.
       const line = offset + 8 // a few px of tolerance
       let current = ids[0]
       for (const id of ids) {
@@ -32,48 +43,30 @@ export function useScrollSpy(ids: string[], offset = 96): string {
         if (element.getBoundingClientRect().top <= line) current = id
         else break
       }
-      setSpyId(current)
+      setActiveId(current)
     }
 
-    const observer = new IntersectionObserver(pick, {
-      /* A band from just under the sticky bar down to 40% of the viewport.
-         Because sections are adjacent, one leaving the top of this band is
-         the same instant the next one's heading passes under the bar — which
-         is exactly when we want to re-check. */
-      rootMargin: `-${offset}px 0px -60% 0px`,
-      threshold: 0,
-    })
+    // One check per frame at most, no matter how fast the wheel spins.
+    let frame = 0
+    const schedule = () => {
+      if (frame) return
+      frame = requestAnimationFrame(() => {
+        frame = 0
+        pick()
+      })
+    }
 
-    const nodes = ids
-      .map((id) => document.getElementById(id))
-      .filter((node): node is HTMLElement => node !== null)
-    nodes.forEach((node) => observer.observe(node))
+    pick() // correct tab on first paint, e.g. when arriving at /#skills
 
-    pick() // set the correct tab on first paint, e.g. after a deep link
-
-    /*
-     * The last-section problem: a short final section can never reach the
-     * line above, because the page runs out of room to scroll. This 1px
-     * marker sits after everything else — when it appears, you are at the
-     * true bottom and the final tab wins regardless.
-     */
-    const endMarker = document.createElement('div')
-    endMarker.setAttribute('aria-hidden', 'true')
-    endMarker.style.cssText = 'height:1px;width:100%;pointer-events:none;'
-    document.body.appendChild(endMarker)
-
-    const endObserver = new IntersectionObserver(
-      ([entry]) => setAtBottom(entry.isIntersecting),
-      { threshold: 0 },
-    )
-    endObserver.observe(endMarker)
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
 
     return () => {
-      observer.disconnect()
-      endObserver.disconnect()
-      endMarker.remove()
+      if (frame) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
     }
   }, [ids, offset])
 
-  return atBottom ? (ids[ids.length - 1] ?? spyId) : spyId
+  return activeId
 }

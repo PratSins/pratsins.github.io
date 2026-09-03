@@ -98,41 +98,44 @@ export const portfolio: PortfolioData = {
    * ------------------------------------------------------------------ */
   projects: [
     {
-      slug: 'ecommerce-platform',
-      title: 'E-commerce Platform',
-      category: 'Web Application',
-      date: '2025-06-25',
+      slug: 'house-price-estimator',
+      title: 'House Price Estimator',
+      category: 'Machine Learning',
+      date: '2025-10-26',
       status: 'live',
-      image: '/images/projects/project-one.svg',
-      imageAlt: 'Laptop showing the E-commerce Platform storefront',
-      tags: ['Next.js', 'TypeScript', 'Stripe', 'GraphQL'],
+      image: '/images/projects/house-price-estimator.svg',
+      imageAlt: 'House Price Estimator — a form for property details beside the predicted price',
+      tags: ['Python', 'Flask', 'scikit-learn', 'React', 'Pandas', 'NumPy'],
       summary:
-        'A full-stack storefront with a custom checkout, subscription billing and a real-time inventory dashboard.',
+        'A price prediction tool for Bangalore real estate: a regression model trained on Kaggle housing data, served through a Flask API and driven from a React front end.',
       links: [
-        { label: 'Website', href: 'https://example.com', kind: 'website' },
-        { label: 'Source', href: 'https://github.com/yourhandle/repo', kind: 'github' },
+        {
+          label: 'Source',
+          href: 'https://github.com/PratSins/house-price-estimator',
+          kind: 'github',
+        },
       ],
       detail: {
         intro:
-          'A complete rewrite of a legacy storefront, rebuilt for speed and for a checkout flow that converts. This page is a placeholder — replace the sections below with the real story.',
+          'Predicting Bangalore house prices from location, size and other listing attributes — the model work in a notebook, wrapped in an API and a small interface so the prediction is usable rather than just plotted.',
         sections: [
           {
             heading: 'The problem',
             body: [
-              'Describe what was broken or missing before you started. What did it cost the business or the user? Concrete numbers land better than adjectives.',
-              'Every string in this list is a separate paragraph, so you can write as much as you want.',
+              'Placeholder — worth replacing with the real motivation. What made the pricing question interesting? Bangalore listings vary wildly by locality and the raw Kaggle data is messy, so there is a genuine story here about what had to be cleaned before anything could be modelled.',
             ],
           },
           {
-            heading: 'What I built',
+            heading: 'How it works',
             body: [
-              'Walk through the architecture and the decisions you actually had to make. Which trade-offs were real? What did you deliberately not build?',
+              'The dataset comes from Kaggle Bangalore house prices. Feature engineering and model training happen in a Jupyter notebook using Pandas, NumPy and scikit-learn; the trained model is then served by a Flask endpoint that the React front end calls with the property details a visitor enters.',
+              'Expand this with the specifics: which features you kept, how you handled outliers and the location column, and which regression you settled on and why.',
             ],
           },
           {
             heading: 'Results',
             body: [
-              'Close with the outcome. Page load went from X to Y, conversion moved by Z, the on-call pager stopped going off at 3am.',
+              'Placeholder — add the numbers. Model accuracy or error against your holdout set is the single most persuasive thing you can put on this page, and it is the part a reader will look for.',
             ],
           },
         ],
