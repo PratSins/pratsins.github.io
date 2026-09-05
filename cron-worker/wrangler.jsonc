@@ -8,8 +8,8 @@
   },
   "triggers": {
     "crons": [
-      // Daily at 04:30 UTC == 10:00 IST
-      "30 4 * * *"
+      // Daily at 10:40 UTC == 16:10 (4:10 PM) IST
+      "40 10 * * *"
     ]
   }
 }
