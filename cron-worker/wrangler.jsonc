@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "github-actions-cron-scheduler",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-03",
+  "observability": {
+    "enabled": true
+  },
+  "triggers": {
+    "crons": [
+      // Daily at 04:30 UTC == 10:00 IST
+      "30 4 * * *"
+    ]
+  }
+}
