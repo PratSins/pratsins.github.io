@@ -46,7 +46,7 @@ jobs:
       - name: Refresh contribution graph
         env:
           GH_CONTRIB_TOKEN: ${{ secrets.GH_CONTRIB_TOKEN }}
-        run: npm run contributions || echo "::warning::Contribution fetch failed — building with the committed data instead"
+        run: npm run contributions
 
       # build:gh copies index.html to 404.html. GitHub Pages has no rewrite
       # rules, so that copy is what makes /projects/<slug> survive a refresh:
