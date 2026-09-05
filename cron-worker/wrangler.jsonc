@@ -1,5 +1,4 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "github-actions-cron-scheduler",
   "main": "src/index.ts",
   "compatibility_date": "2026-09-03",
@@ -8,8 +7,8 @@
   },
   "triggers": {
     "crons": [
-      // Daily at 10:40 UTC == 16:10 (4:10 PM) IST
-      "40 10 * * *"
+      // Daily at 00:30 UTC == 06:00 AM IST
+      "30 0 * * *"
     ]
   }
 }
