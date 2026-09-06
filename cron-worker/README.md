@@ -24,10 +24,25 @@ npm install
 
 # 1. Set the GitHub Token Secret in Cloudflare
 npx wrangler secret put GH_DISPATCH_TOKEN
+# Login First time
+# Yes - for creating the worker
 # (Paste your GitHub PAT when prompted)
 
 # 2. Deploy to Cloudflare Workers
 npx wrangler deploy
+```
+
+## For updates
+```bash
+# 1. Deploy the updated schedule to Cloudflare
+cd /Users/spurge/FrameVerse/portfolio/cron-worker
+npx wrangler deploy
+
+# 2. Commit and push the changes
+cd /Users/spurge/FrameVerse/portfolio
+git add cron-worker/wrangler.jsonc cron-worker/package.json cron-worker/package-lock.json
+git commit -m "chore: set cron schedule to 6:00 AM IST"
+git push origin main
 ```
 
 ---
