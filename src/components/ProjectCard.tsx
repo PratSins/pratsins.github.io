@@ -7,6 +7,8 @@ const STATUS_LABEL: Record<ProjectStatus, string> = {
   live: 'Live',
   'coming-soon': 'Coming soon',
   archived: 'Archived',
+  finished: 'Finished',
+  Finished: 'Finished',
 }
 
 const LINK_ICON: Record<NonNullable<ProjectLink['kind']>, IconName> = {

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Icon } from '../components/Icons'
 import { portfolio } from '../data/portfolio'
 import { NotFound } from './NotFound'
+import { MermaidDiagram } from '../components/MermaidDiagram'
 import type { IconName } from '../components/Icons'
 import type { ProjectLink } from '../types'
 
@@ -81,6 +82,25 @@ export function ProjectDetail() {
             <p className="detail__intro">{project.detail.intro}</p>
           </div>
 
+          {project.detail.video && (
+            <figure className="detail__video-container">
+              <video
+                className="detail__video"
+                src={project.detail.video}
+                controls
+                playsInline
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+              {project.detail.videoCaption && (
+                <figcaption className="detail__video-caption">
+                  {project.detail.videoCaption}
+                </figcaption>
+              )}
+            </figure>
+          )}
+
           {project.detail.sections.map((section) => (
             <div key={section.heading}>
               <section className="detail__section">
@@ -90,6 +110,13 @@ export function ProjectDetail() {
                     <p key={j}>{paragraph}</p>
                   ))}
                 </div>
+
+                {section.diagram && (
+                  <MermaidDiagram
+                    chart={section.diagram}
+                    caption={section.diagramCaption}
+                  />
+                )}
               </section>
             </div>
           ))}

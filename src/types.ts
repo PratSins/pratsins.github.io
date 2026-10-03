@@ -78,7 +78,7 @@ export interface EducationItem {
   coursework?: string[]
 }
 
-export type ProjectStatus = 'live' | 'coming-soon' | 'archived'
+export type ProjectStatus = 'live' | 'coming-soon' | 'archived' | 'finished' | 'Finished'
 
 export interface ProjectLink {
   label: string
@@ -90,6 +90,8 @@ export interface ProjectSection {
   heading: string
   /** Each string is one paragraph. */
   body: string[]
+  diagram?: string
+  diagramCaption?: string
 }
 
 export interface Project {
@@ -111,6 +113,8 @@ export interface Project {
   /** Long-form content for the /projects/<slug> page. Optional. */
   detail?: {
     intro: string
+    video?: string
+    videoCaption?: string
     sections: ProjectSection[]
   }
 }
