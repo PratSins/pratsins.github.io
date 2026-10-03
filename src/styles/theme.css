@@ -37,14 +37,12 @@
   --logo-disc-light: #eceae4; /* whitish grey, for Java */
   --logo-disc-go: #ddd0cf;    /* a shade darker than Java's, faintly pink, for Go */
 
-  /* Contribution graph — five steps from an empty day to the busiest.
-     GitHub's green would fight the mustard, so this is a ramp of the site's
-     own ink instead. Swap these for greens if you prefer the familiar look. */
-  --cal-0: rgba(36, 27, 6, 0.18);
-  --cal-1: rgba(36, 27, 6, 0.42);
-  --cal-2: rgba(36, 27, 6, 0.62);
-  --cal-3: rgba(36, 27, 6, 0.80);
-  --cal-4: rgba(36, 27, 6, 1);
+  /* Contribution graph — five steps from an empty day to the busiest (GitHub green) */
+  --cal-0: #161b22;
+  --cal-1: #0e4429;
+  --cal-2: #006d32;
+  --cal-3: #26a641;
+  --cal-4: #39d353;
 
   /* --- Type ----------------------------------------------------------- */
   --font: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
