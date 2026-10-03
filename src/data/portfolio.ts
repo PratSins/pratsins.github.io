@@ -38,7 +38,7 @@ export const portfolio: PortfolioData = {
       // Add more if you like — 'website' also has an icon:
       { kind: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/pratsingh4069' },
       { kind: 'leetcode', label: 'LeetCode', href: 'https://leetcode.com/u/pratyush2024/' },
-      { kind: 'resume', label: 'Résumé', href: '/resume.pdf' },
+      { kind: 'resume', label: 'Résumé', href: 'https://github.com/PratSins/Resume-1/blob/main/Pratyush%20resume%20x1.pdf' },
     ],
   },
 
